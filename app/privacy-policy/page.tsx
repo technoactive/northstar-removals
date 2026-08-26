@@ -13,6 +13,7 @@ export default function PrivacyPolicyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
+      path="/privacy-policy"
       intro="Your privacy matters to us. This policy explains what personal data we collect, why we collect it, and the rights you have over it."
       lastUpdated="26 August 2026"
       sections={[

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import CtaBanner from "@/components/CtaBanner";
 
 export const metadata: Metadata = {
@@ -90,6 +91,7 @@ export default function AboutUs() {
         image="/images/moving-team.jpg"
         imageAlt="The Northstar Removals team"
       />
+      <Breadcrumbs items={[{ title: "About Us", href: "/about-us" }]} />
       <article className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div className="space-y-5 leading-relaxed text-slate-700">

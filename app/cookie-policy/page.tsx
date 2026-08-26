@@ -13,6 +13,7 @@ export default function CookiePolicyPage() {
   return (
     <LegalPage
       title="Cookie Policy"
+      path="/cookie-policy"
       intro="This policy explains what cookies are, which ones this website uses, and how you can manage your preferences."
       lastUpdated="26 August 2026"
       sections={[

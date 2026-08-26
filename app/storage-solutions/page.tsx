@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Star from "@/components/Star";
 import { site } from "@/lib/site";
@@ -52,6 +54,9 @@ export default function StorageSolutions() {
         subtitle="Secure, flexible storage for residential, international, business and commercial clients"
         image="/images/storage-1.jpg"
         imageAlt="Northstar secure storage warehouse"
+      />
+      <Breadcrumbs
+        items={[{ title: "Storage Solutions", href: "/storage-solutions" }]}
       />
       <article className="mx-auto max-w-6xl px-4 py-16">
         <p className="mx-auto max-w-4xl text-center leading-relaxed text-slate-700">
@@ -255,6 +260,7 @@ export default function StorageSolutions() {
           </p>
         </div>
       </article>
+      <RelatedServices current="/storage-solutions" />
     </>
   );
 }

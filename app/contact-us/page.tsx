@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import QuoteForm from "@/components/QuoteForm";
 import { site } from "@/lib/site";
 
@@ -19,6 +20,7 @@ export default function ContactUs() {
         imageAlt="The Northstar Removals fleet"
         subtitle="For more information on our home removals, office removals, international relocation or storage services please contact us using the details provided."
       />
+      <Breadcrumbs items={[{ title: "Contact Us", href: "/contact-us" }]} />
       <div className="mx-auto max-w-5xl px-4 py-14">
         <div className="mb-12 grid gap-6 sm:grid-cols-3">
           <div className="rounded-2xl bg-slate-50 p-6 text-center ring-1 ring-navy-900/5">

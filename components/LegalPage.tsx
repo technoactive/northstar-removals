@@ -1,5 +1,6 @@
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { site } from "@/lib/site";
 
 export type LegalSection = {
@@ -12,15 +13,18 @@ export default function LegalPage({
   intro,
   lastUpdated,
   sections,
+  path,
 }: {
   title: string;
   intro: string;
   lastUpdated: string;
   sections: LegalSection[];
+  path: string;
 }) {
   return (
     <>
       <PageHero title={title} subtitle={intro} />
+      <Breadcrumbs items={[{ title, href: path }]} />
       <div className="mx-auto max-w-4xl px-4 py-16 sm:py-20">
         <p className="text-sm font-semibold uppercase tracking-wide text-slate-500">
           Last updated: {lastUpdated}

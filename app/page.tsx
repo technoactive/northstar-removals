@@ -3,6 +3,7 @@ import Link from "next/link";
 import { site } from "@/lib/site";
 import Star, { FiveStars } from "@/components/Star";
 import TrustBar from "@/components/TrustBar";
+import Faq from "@/components/Faq";
 
 const serviceCards = [
   {
@@ -409,6 +410,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <Faq />
 
       {/* Awards marquee */}
       <section className="overflow-hidden border-y border-navy-900/10 bg-slate-50 py-12">

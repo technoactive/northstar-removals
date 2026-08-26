@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Star from "@/components/Star";
 
@@ -161,6 +163,11 @@ export default function WhiteGloveService() {
         image="/images/white-glove.jpg"
         imageAlt="White glove premium moving service"
       />
+      <Breadcrumbs
+        items={[
+          { title: "White Glove Service", href: "/white-glove-service" },
+        ]}
+      />
       <article className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <Image
@@ -225,6 +232,7 @@ export default function WhiteGloveService() {
 
         <CtaBanner />
       </article>
+      <RelatedServices current="/white-glove-service" />
     </>
   );
 }

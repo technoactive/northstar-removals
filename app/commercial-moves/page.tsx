@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Star from "@/components/Star";
 
@@ -102,6 +104,9 @@ export default function CommercialMoves() {
         subtitle="Northstar: Your Trusted Partner in Office Removals and Move Management"
         image="/images/office-move.jpg"
         imageAlt="An office relocation in progress"
+      />
+      <Breadcrumbs
+        items={[{ title: "Commercial Moves", href: "/commercial-moves" }]}
       />
       <article className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid items-center gap-12 lg:grid-cols-2">
@@ -247,6 +252,7 @@ export default function CommercialMoves() {
           <CtaBanner />
         </div>
       </article>
+      <RelatedServices current="/commercial-moves" />
     </>
   );
 }

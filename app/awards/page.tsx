@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Awards",
@@ -50,6 +51,7 @@ export default function Awards() {
         image="/images/moving-team.jpg"
         imageAlt="The award-winning Northstar Removals team"
       />
+      <Breadcrumbs items={[{ title: "Awards", href: "/awards" }]} />
       <div className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {awards.map((award) => (

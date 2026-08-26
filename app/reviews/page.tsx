@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
+import Breadcrumbs from "@/components/Breadcrumbs";
 import { FiveStars } from "@/components/Star";
 
 export const metadata: Metadata = {
@@ -109,6 +110,7 @@ export default function Reviews() {
         image="/images/moving-team.jpg"
         imageAlt="The Northstar Removals team"
       />
+      <Breadcrumbs items={[{ title: "Reviews", href: "/reviews" }]} />
       <div className="mx-auto max-w-6xl px-4 py-14">
         <h2 className="text-2xl font-extrabold uppercase tracking-wide text-navy-950">
           Our Google Reviews

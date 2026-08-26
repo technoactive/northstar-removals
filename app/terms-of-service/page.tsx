@@ -13,6 +13,7 @@ export default function TermsOfServicePage() {
   return (
     <LegalPage
       title="Terms of Service"
+      path="/terms-of-service"
       intro="These terms govern your use of this website and set out the basis on which we provide quotations and services."
       lastUpdated="26 August 2026"
       sections={[

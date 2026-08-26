@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Star from "@/components/Star";
 
@@ -32,6 +34,11 @@ export default function InternationalMoves() {
         subtitle="Northstar Worldwide Relocation and Removals"
         image="/images/international.jpg"
         imageAlt="Shipping containers ready for international removals"
+      />
+      <Breadcrumbs
+        items={[
+          { title: "International Moves", href: "/international-moves" },
+        ]}
       />
       <article className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid items-center gap-12 lg:grid-cols-2">
@@ -95,9 +102,7 @@ export default function InternationalMoves() {
           </ul>
         </div>
 
-        <CtaBanner />
-
-        <div className="flex flex-col items-center gap-6 rounded-3xl bg-navy-950 p-8 text-white sm:flex-row sm:p-10">
+        <div className="mt-14 flex flex-col items-center gap-6 rounded-3xl bg-navy-950 p-8 text-white sm:flex-row sm:p-10">
           <div className="flex shrink-0 gap-3">
             <Image
               src="/images/badge-guild.png"
@@ -122,7 +127,10 @@ export default function InternationalMoves() {
             underlining our commitment to excellence.
           </p>
         </div>
+
+        <CtaBanner label="Plan your international move today!" />
       </article>
+      <RelatedServices current="/international-moves" />
     </>
   );
 }

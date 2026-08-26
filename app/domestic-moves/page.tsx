@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
+import Breadcrumbs from "@/components/Breadcrumbs";
+import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Star from "@/components/Star";
 
@@ -30,6 +32,9 @@ export default function DomesticMoves() {
         subtitle="Household removals London and the UK"
         image="/images/domestic-family.jpg"
         imageAlt="A family beside their removals van after moving home"
+      />
+      <Breadcrumbs
+        items={[{ title: "Domestic Moves", href: "/domestic-moves" }]}
       />
       <article className="mx-auto max-w-6xl px-4 py-16">
         <div className="grid items-center gap-12 lg:grid-cols-2">
@@ -114,6 +119,7 @@ export default function DomesticMoves() {
 
         <CtaBanner label="Get your Free Quotation today!" />
       </article>
+      <RelatedServices current="/domestic-moves" />
     </>
   );
 }

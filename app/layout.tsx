@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import PreFooter from "@/components/PreFooter";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
+import MobileActionBar from "@/components/MobileActionBar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -110,10 +111,19 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-navy-950 focus:px-5 focus:py-2.5 focus:text-sm focus:font-bold focus:text-white"
+        >
+          Skip to main content
+        </a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
         <PreFooter />
         <Footer />
+        <MobileActionBar />
         <CookieBanner />
       </body>
     </html>
