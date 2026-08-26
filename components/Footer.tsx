@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { footerHelpLinks, site } from "@/lib/site";
+import { footerHelpLinks, legalLinks, site } from "@/lib/site";
 import Star from "@/components/Star";
 
 export default function Footer() {
@@ -106,12 +106,25 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-2 px-4 py-5 text-xs text-white/50 sm:flex-row">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-white/50 sm:flex-row">
           <p>
             Copyright © {new Date().getFullYear()} Northstar Removals · All
             rights reserved
           </p>
-          <p>Rebuilt with Next.js</p>
+          <nav aria-label="Legal">
+            <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5">
+              {legalLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="transition hover:text-white"
+                  >
+                    {l.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
     </footer>

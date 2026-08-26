@@ -25,6 +25,12 @@ export const navLinks = [
   { title: "Contact Us", href: "/contact-us" },
 ] as const;
 
+export const legalLinks = [
+  { title: "Privacy Policy", href: "/privacy-policy" },
+  { title: "Cookie Policy", href: "/cookie-policy" },
+  { title: "Terms of Service", href: "/terms-of-service" },
+] as const;
+
 export const footerHelpLinks = [
   { title: "Domestic Moves", href: "/domestic-moves" },
   { title: "International Moves", href: "/international-moves" },

@@ -13,6 +13,9 @@ const routes = [
   { path: "/reviews", priority: 0.7 },
   { path: "/awards", priority: 0.6 },
   { path: "/contact-us", priority: 0.9 },
+  { path: "/privacy-policy", priority: 0.3 },
+  { path: "/cookie-policy", priority: 0.3 },
+  { path: "/terms-of-service", priority: 0.3 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

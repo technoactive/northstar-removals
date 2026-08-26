@@ -127,11 +127,19 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-navy-950/95 via-navy-950/60 to-transparent" />
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy-950/80 to-transparent" />
-        <div className="relative mx-auto max-w-7xl px-4 pb-24 pt-24 sm:pb-32 sm:pt-32">
-          <div className="max-w-3xl">
+        <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-24 pt-16 sm:pt-24 lg:grid-cols-[1fr_auto] lg:pb-32">
+          <Image
+            src="/images/award-new.png"
+            alt="Northstar Removals 20 Years of Excellence anniversary badge"
+            width={420}
+            height={420}
+            priority
+            className="fade-up mx-auto w-44 drop-shadow-[0_10px_35px_rgba(0,0,0,0.55)] sm:w-56 lg:order-2 lg:w-96"
+          />
+          <div className="max-w-3xl lg:order-1">
             <p className="fade-up inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-bold tracking-[0.2em] backdrop-blur">
-              <Star className="star-glow h-3.5 w-3.5" /> AWARD-WINNING ·
-              REMOVALS &amp; STORAGE
+              <Star className="star-glow h-3.5 w-3.5" /> CELEBRATING 20 YEARS
+              OF EXCELLENCE
             </p>
             <h1 className="fade-up fade-up-delay-1 mt-6 font-display text-5xl font-black italic leading-[1.05] tracking-tight sm:text-7xl">
               For a<br />
