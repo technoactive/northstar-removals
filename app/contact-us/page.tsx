@@ -16,7 +16,7 @@ export default function ContactUs() {
     <>
       <PageHero
         title="Contact Us"
-        image="/images/hero.png"
+        image="/images/hero.jpg"
         imageAlt="The Northstar Removals fleet"
         subtitle="For more information on our home removals, office removals, international relocation or storage services please contact us using the details provided."
       />

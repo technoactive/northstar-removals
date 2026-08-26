@@ -21,7 +21,7 @@ export default function NotFound() {
   return (
     <section className="relative isolate overflow-hidden bg-navy-950 text-white">
       <Image
-        src="/images/hero.png"
+        src="/images/hero.jpg"
         alt=""
         fill
         sizes="100vw"

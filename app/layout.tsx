@@ -44,7 +44,7 @@ export const metadata: Metadata = {
       "Award-winning removals and storage across London, the UK and worldwide. For a Brilliant Move!",
     images: [
       {
-        url: "/images/hero.png",
+        url: "/images/hero.jpg",
         width: 2048,
         height: 892,
         alt: "The Northstar Removals fleet of branded trucks",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     title: "Northstar Removals | Award-Winning Removals & Storage Company",
     description:
       "Award-winning removals and storage across London, the UK and worldwide. For a Brilliant Move!",
-    images: ["/images/hero.png"],
+    images: ["/images/hero.jpg"],
   },
   icons: {
     icon: "/images/icon.png",
@@ -80,7 +80,7 @@ const jsonLd = {
   name: "Northstar Removals & Storage",
   url: siteUrl,
   logo: `${siteUrl}/images/icon.png`,
-  image: `${siteUrl}/images/hero.png`,
+  image: `${siteUrl}/images/hero.jpg`,
   slogan: "For a Brilliant Move!",
   foundingDate: "2006",
   email: "info@northstar-removals.com",

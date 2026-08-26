@@ -119,7 +119,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-navy-950 text-white">
         <Image
-          src="/images/hero.png"
+          src="/images/hero.jpg"
           alt="The Northstar Removals fleet of branded trucks at dusk"
           fill
           priority
@@ -130,7 +130,7 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-navy-950/80 to-transparent" />
         <div className="relative mx-auto grid max-w-7xl items-center gap-10 px-4 pb-24 pt-16 sm:pt-24 lg:grid-cols-[1fr_auto] lg:pb-32">
           <Image
-            src="/images/award-new.png"
+            src="/images/award-new.webp"
             alt="Northstar Removals 20 Years of Excellence anniversary badge"
             width={420}
             height={420}
