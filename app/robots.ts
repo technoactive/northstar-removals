@@ -6,6 +6,12 @@ import { siteUrl } from "@/lib/site";
  * allows them, but naming them makes the policy explicit and survives any
  * future "block unknown bots" rule added above it.
  *
+ * POLICY DECISION (client, Oct 2026): maximum visibility everywhere. Both
+ * AI *search* crawlers (OAI-SearchBot, Claude-SearchBot, PerplexityBot…)
+ * and AI *training* crawlers (GPTBot, ClaudeBot, CCBot, Google-Extended,
+ * Applebot-Extended, meta-externalagent…) are deliberately allowed. Do not
+ * split them into allow/disallow groups without the client's say-so.
+ *
  * Do NOT disallow /thank-you here: it is noindex, and Google can only honour
  * a noindex tag on a page it is allowed to fetch.
  */
