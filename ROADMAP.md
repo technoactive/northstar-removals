@@ -27,15 +27,13 @@ See `docs/email-setup.md` for the full flow and deliverability notes.
 - [x] Canonical domain is the root `northstar-removals.com`; Vercel redirects
       `www` → root (308), and all canonical tags, sitemap and structured data
       use the root domain to match.
-- [ ] In Google Search Console, add `northstar-removals.com` as a Domain
+- [x] In Google Search Console, add `northstar-removals.com` as a Domain
       property (covers both www and root) and submit `/sitemap.xml`.
-      Needs the client's Google account — cannot be done from the codebase.
-      1. search.google.com/search-console → Add property → **Domain** →
-         `northstar-removals.com`. Google gives a TXT record; add it in
-         Cloudflare DNS (name `@`). Verify. (Fallback: URL-prefix property
-         with the HTML-tag method — paste the token into the
-         `GOOGLE_SITE_VERIFICATION` env var in Vercel and redeploy.)
-      2. Sitemaps → enter `sitemap.xml` → Submit. Expect 33 URLs.
+      DONE 2026-10-06: Domain property verified via Cloudflare TXT record;
+      `sitemap.xml` submitted → Success, 33 discovered pages; old WordPress
+      `www…/sitemap` entry removed. (The `GOOGLE_SITE_VERIFICATION` env var
+      remains available as an HTML-tag fallback but is not needed.)
+      Remaining follow-ups:
       3. URL Inspection → paste each of `/`, `/areas/pinner`,
          `/domestic-moves`, `/contact-us` → **Test live URL**. Each should
          show "URL is available to Google", with Breadcrumbs/FAQ/Service
