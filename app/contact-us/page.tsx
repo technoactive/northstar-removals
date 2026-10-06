@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import QuoteForm from "@/components/QuoteForm";
@@ -45,12 +47,20 @@ export default function ContactUs() {
             ))}
           </div>
           <div className="rounded-2xl bg-slate-50 p-6 text-center ring-1 ring-navy-900/5">
-            <h2 className="font-bold text-navy-950">Mobile</h2>
+            <h2 className="font-bold text-navy-950">Mobile &amp; WhatsApp</h2>
             <a
               href={site.mobile.href}
               className="mt-2 block text-sm font-semibold text-brand-600 hover:text-brand-500"
             >
               {site.mobile.label}
+            </a>
+            <a
+              href={site.whatsapp.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-1 block text-sm font-semibold text-brand-600 hover:text-brand-500"
+            >
+              Message us on WhatsApp — send photos for a quick quote
             </a>
           </div>
         </div>
@@ -60,6 +70,30 @@ export default function ContactUs() {
           discuss and evaluate your requirements, providing you with a bespoke
           quotation.
         </p>
+
+        <ul
+          aria-label="Accreditations and reviews"
+          className="mb-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
+        >
+          {[
+            { src: "/images/badge-guild.png", alt: "National Guild of Removers member", href: "/awards" },
+            { src: "/images/badge-ombudsman.png", alt: "Removals Industry Ombudsman scheme", href: "/awards" },
+            { src: "/images/badge-removal-approval.png", alt: "1,200+ reviews on Removal Approval", href: "/reviews" },
+            { src: "/images/badge-google.jpg", alt: "Google reviews", href: "/reviews" },
+          ].map((badge) => (
+            <li key={badge.src}>
+              <Link href={badge.href} title={badge.alt}>
+                <Image
+                  src={badge.src}
+                  alt={badge.alt}
+                  width={64}
+                  height={64}
+                  className="h-14 w-auto object-contain opacity-80 transition hover:opacity-100"
+                />
+              </Link>
+            </li>
+          ))}
+        </ul>
 
         <QuoteForm />
       </div>

@@ -8,9 +8,9 @@ import CtaBanner from "@/components/CtaBanner";
 import Star from "@/components/Star";
 
 export const metadata: Metadata = {
-  title: "International Moves",
+  title: "International Removals London | Worldwide Moves by Road, Sea & Air",
   description:
-    "Worldwide relocation and removals with over 20 years of experience. Export packing, container shipping, customs clearance and full documentation.",
+    "International removals from London and the UK with over 20 years of experience. Export packing, container shipping, airfreight, customs clearance and full documentation, managed door to door.",
   alternates: { canonical: "/international-moves" },
 };
 
@@ -31,15 +31,15 @@ export default function InternationalMoves() {
   return (
     <>
       <PageHero
-        title="International Moves"
-        subtitle="Northstar Worldwide Relocation and Removals"
+        title="International Removals London"
+        subtitle="Worldwide relocation from London and the UK by road, sea and air — export packing, shipping, customs and delivery, managed door to door"
         image="/images/international.jpg"
         imageAlt="Shipping containers ready for international removals"
       />
       <ServiceJsonLd
-        name="International Moves"
+        name="International Removals London"
         serviceType="International removals and relocation"
-        description="Worldwide relocation and removals with over 20 years of experience. Export packing, container shipping, customs clearance and full documentation."
+        description="International removals from London and the UK with over 20 years of experience. Export packing, container shipping, airfreight, customs clearance and full documentation, managed door to door."
         path="/international-moves"
         image="/images/international.jpg"
         areaServed={["United Kingdom", "Worldwide"]}
@@ -67,9 +67,12 @@ export default function InternationalMoves() {
           </div>
           <div className="order-1 space-y-5 leading-relaxed text-slate-700 lg:order-2">
             <p>
-              Moving outside the UK requires special skills involving export
-              packing, container loading, documentation for export, shipping
-              and a detailed knowledge of local conditions.
+              International removals from London require special skills:
+              export packing, container loading, documentation for export,
+              shipping and a detailed knowledge of local conditions at the
+              other end. From our base in Pinner we handle moves abroad for
+              families and businesses across London, the home counties and the
+              rest of the UK.
             </p>
             <p>
               Moving abroad is a big step and can be a stressful experience,

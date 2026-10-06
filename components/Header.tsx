@@ -152,6 +152,13 @@ export default function Header() {
             White Glove Service
           </Link>
           <Link
+            href="/areas"
+            onClick={() => setMobileOpen(false)}
+            className="block py-2.5 font-semibold"
+          >
+            Areas We Cover
+          </Link>
+          <Link
             href="/about-us"
             onClick={() => setMobileOpen(false)}
             className="block py-2.5 font-semibold"

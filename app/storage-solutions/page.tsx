@@ -9,9 +9,9 @@ import Star from "@/components/Star";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Storage Solutions",
+  title: "Storage Solutions | Secure Storage for Harrow, Pinner & London",
   description:
-    "Secure containerised and climate-controlled storage across 7+ locations. Flexible terms from one week to many years with fully managed collection and delivery.",
+    "Secure containerised storage for Harrow, Pinner, North West London and beyond, across 7+ locations including Park Royal NW10. Collected from your door, flexible terms from one week to many years.",
   alternates: { canonical: "/storage-solutions" },
 };
 
@@ -52,14 +52,15 @@ export default function StorageSolutions() {
     <>
       <PageHero
         title="Storage Solutions"
-        subtitle="Secure, flexible storage for residential, international, business and commercial clients"
+        subtitle="Secure, flexible storage for Harrow, Pinner, North West London and beyond — collected from your door, for residential, international, business and commercial clients"
         image="/images/storage-1.jpg"
         imageAlt="Northstar secure storage warehouse"
       />
       <ServiceJsonLd
         name="Storage Solutions"
         serviceType="Containerised and self storage"
-        description="Secure containerised and climate-controlled storage across 7+ locations. Flexible terms from one week to many years with fully managed collection and delivery."
+        description="Secure containerised storage for Harrow, Pinner, North West London and beyond, across 7+ locations including Park Royal NW10. Collected from your door, flexible terms from one week to many years."
+        areaServed={["Harrow", "Pinner", "North West London", "London", "United Kingdom"]}
         path="/storage-solutions"
         image="/images/storage-1.jpg"
       />
@@ -68,11 +69,14 @@ export default function StorageSolutions() {
       />
       <article className="mx-auto max-w-6xl px-4 py-16">
         <p className="mx-auto max-w-4xl text-center leading-relaxed text-slate-700">
-          Northstar offers a full packing and moving service solution, to
-          secure storage facilities, catering for residential, international
-          and all business and commercial clients. Northstar&rsquo;s highly
-          experienced teams ensure a professional moving &amp; storage process
-          combined with top-tier storage facilities.
+          Looking for storage in Harrow, Pinner or North West London? Northstar
+          offers a fully managed alternative to self storage: we collect from
+          your door, seal your belongings into containers and hold them in
+          secure warehouses — including Park Royal, NW10, a few minutes from
+          most of North West London — for residential, international and all
+          business and commercial clients. No van hire, no trips to a unit, and
+          usually a lower monthly cost than a self-storage room of the same
+          size.
         </p>
 
         {/* Gallery */}

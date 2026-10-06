@@ -51,21 +51,34 @@ See `docs/email-setup.md` for the full flow and deliverability notes.
 
 ### 4. Google Business Profile
 
+This is the single biggest off-site lever: Alexander Removals outranks us in
+the local pack on review count, not website quality.
+
 - [ ] Ensure name, address and phone exactly match the site
 - [ ] Link the profile to the new site
 - [ ] Set up a process for requesting Google reviews after each move
 
-### 5. Local area landing pages
+### 5. Local area landing pages — DONE
 
-The old site had 9 area pages (Holborn, Victoria, Kensington, Hampstead,
-Belsize Park, North London…) that currently 301 to generic service pages.
-Rebuild them properly to recapture that traffic:
+The main competitor (alexanderremovals.co.uk) gets nearly all of its organic
+traffic from ~50 thin `/areas/*-removals/` pages. We now have a `/areas` hub
+plus 17 area pages driven from `lib/areas.ts`, each with unique local copy
+(property types, parking suspensions, lift bookings, drive time from the
+Pinner depot), Service + FAQPage + BreadcrumbList schema, genuine reviews,
+nearby-area links, and links from the nav, footer and homepage.
 
-- [ ] Template: area-specific hero, unique copy, testimonials from that
-      area, map, FAQ, quote CTA
-- [ ] Start with the areas closest to Pinner (Harrow, Ruislip, Watford,
-      North West London) plus the old URLs' areas
-- [ ] Update the 301s to point at the rebuilt pages once live
+- [x] Pinner, Harrow, Ruislip, Northwood, Stanmore, Watford, Bushey,
+      Uxbridge, Hillingdon, Wembley, Ealing, Hampstead, Kensington,
+      North London, West London, North West London, St Albans
+- [x] Legacy 301s re-pointed (Hampstead, Belsize Park, Kensington,
+      North London → their area pages)
+- [x] Service pages retitled for the paying queries: "Office Removals
+      London", "International Removals London", storage copy targets
+      Harrow/Pinner; homepage title leads with London, Pinner & Harrow
+- [x] New service pages: `/packing-service`, `/piano-removals`
+- [ ] Add more areas as enquiries show demand (Edgware, Hendon, Rickmansworth,
+      Borehamwood, Amersham) — add an entry to `lib/areas.ts`, nothing else
+- [ ] Submit the updated sitemap in Search Console after deploy
 
 ### 6. Analytics (consent-gated)
 
@@ -89,7 +102,8 @@ Rebuild them properly to recapture that traffic:
 
 ### 9. Conversion extras
 
-- [ ] WhatsApp button (customers like sending photos for quick quotes)
+- [x] WhatsApp button (sticky mobile bar + contact page; `site.whatsapp`)
+- [x] Accreditation badges above the quote form
 - [ ] Custom Open Graph image (branded card with badge + fleet)
 - [ ] Callback-request option ("we'll call you within the hour")
 

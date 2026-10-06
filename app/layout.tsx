@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import JsonLd, { ORG_ID, WEBSITE_ID } from "@/components/JsonLd";
 import { serviceCards, site, siteUrl } from "@/lib/site";
+import { areas } from "@/lib/areas";
 
 // Fonts are self-hosted (variable woff2, latin subset) so the build never
 // depends on Google Fonts. This avoids a Turbopack build failure on Vercel
@@ -37,17 +38,18 @@ const archivo = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Northstar Removals | Award-Winning Removals & Storage Company",
+    default:
+      "Northstar Removals | Removal Company London, Pinner & Harrow",
     template: "%s | Northstar Removals",
   },
   description:
-    "Award-winning removals and storage company based in Pinner, London. Domestic, international and commercial moves plus secure storage solutions across the UK and worldwide.",
+    "Award-winning removal company based in Pinner, serving Harrow, North West London and the whole of London since 2006. House and office removals, packing, piano moves, international relocation and secure storage.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_GB",
     siteName: "Northstar Removals",
-    title: "Northstar Removals | Award-Winning Removals & Storage Company",
+    title: "Northstar Removals | Removal Company London, Pinner & Harrow",
     description:
       "Award-winning removals and storage across London, the UK and worldwide. For a Brilliant Move!",
     images: [
@@ -61,7 +63,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Northstar Removals | Award-Winning Removals & Storage Company",
+    title: "Northstar Removals | Removal Company London, Pinner & Harrow",
     description:
       "Award-winning removals and storage across London, the UK and worldwide. For a Brilliant Move!",
     images: ["/images/hero.jpg"],
@@ -133,6 +135,11 @@ const jsonLd = {
         },
       ],
       areaServed: [
+        ...areas.map((a) => ({
+          "@type": "Place",
+          name: a.name,
+          url: `${siteUrl}/areas/${a.slug}`,
+        })),
         { "@type": "City", name: "London" },
         { "@type": "Country", name: "United Kingdom" },
         { "@type": "Place", name: "Worldwide" },
@@ -156,6 +163,8 @@ const jsonLd = {
         "International removals",
         "Containerised storage",
         "Export packing",
+        "Professional packing",
+        "Piano removals",
         "Fine art and antiques moving",
       ],
       hasOfferCatalog: {

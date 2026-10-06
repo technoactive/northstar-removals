@@ -1,5 +1,6 @@
 import { faqs } from "@/components/Faq";
 import { site, siteUrl } from "@/lib/site";
+import { areas } from "@/lib/areas";
 
 /**
  * Content for /llms.txt and /llms-full.txt (https://llmstxt.org).
@@ -45,6 +46,18 @@ const pages = [
       "Premium, fully managed moves with a dedicated on-site move manager, bespoke crating for fine art and antiques, room layout planning and incognito moves.",
   },
   {
+    title: "Packing Service",
+    path: "/packing-service",
+    summary:
+      "Full, part, fragile-only and export packing by professional packers, with materials delivered and unpacking available.",
+  },
+  {
+    title: "Piano Removals",
+    path: "/piano-removals",
+    summary:
+      "Upright and grand pianos moved locally, nationwide and worldwide by trained crews with piano trolleys and skids; piano storage available.",
+  },
+  {
     title: "About Us",
     path: "/about-us",
     summary:
@@ -86,13 +99,21 @@ export function llmsTxt(): string {
     "## Services",
     "",
     ...pages
-      .slice(0, 5)
+      .slice(0, 7)
       .map((p) => `- [${p.title}](${siteUrl}${p.path}): ${p.summary}`),
+    "",
+    "## Areas covered (local pages)",
+    "",
+    `- [Areas We Cover](${siteUrl}/areas): Index of local removal pages for North West London, Hertfordshire and London`,
+    ...areas.map(
+      (a) =>
+        `- [Removals ${a.name}](${siteUrl}/areas/${a.slug}): ${a.postcodes.join(", ")} — about ${a.driveMinutes} minutes from the Pinner depot`,
+    ),
     "",
     "## Company",
     "",
     ...pages
-      .slice(5)
+      .slice(7)
       .map((p) => `- [${p.title}](${siteUrl}${p.path}): ${p.summary}`),
     "",
     "## Full content",
@@ -150,6 +171,25 @@ export function llmsFullTxt(): string {
     "## White Glove Service",
     "",
     "A bespoke, premium, fully managed relocation service. It begins with a full consultation and on-site survey, after which a dedicated On-Site Move Manager creates a tailored plan and coordinates every step, so the customer need not be present on moving day. Includes room layout planning; custom-built, foam-lined timber crates for fragile and high-value items such as fine art, antiques and pianos; responsible rehoming, donation and recycling of unwanted items (Northstar is a licensed waste carrier); confidential document shredding; concierge transfer of utilities, phone and internet; curtain cleaning and installation; and confidential (incognito) moves using non-branded vehicles with staff instructed to keep the destination private.",
+    "",
+    "## Packing Service",
+    "",
+    "Professional packing across London and the UK: full packing (the whole home packed the day before the move), fragile-only packing, unpacking at the destination, and export packing for international moves. Materials include double-walled cartons, acid-free tissue, bubble wrap, picture and mirror cartons, dish-pack cartons and lidded crates for offices; boxes are collected and reused after the move. Packing is quoted as part of the fixed-price removal and items packed by Northstar are covered by its comprehensive insurance.",
+    "",
+    "## Piano Removals",
+    "",
+    "Upright, baby grand, grand and digital pianos moved locally, nationwide and internationally by crews trained for piano work, using piano trolleys, skids, straps, ramps and tail-lift vehicles. Grand pianos have the legs, lyre and lid removed and reassembled. Stairs and access are planned on a survey, quotes are fixed, insurance is comprehensive and piano storage is available. Pianos usually need tuning two to three weeks after a move once they have settled.",
+    "",
+    "## Areas covered",
+    "",
+    `Northstar's depot is at ${address}. The following areas have dedicated pages describing property types, parking and access and typical moves:`,
+    "",
+    ...areas.map(
+      (a) =>
+        `- ${a.name} (${a.region}; ${a.postcodes.join(", ")}; about ${a.driveMinutes} minutes from Pinner): ${a.description} Page: ${siteUrl}/areas/${a.slug}`,
+    ),
+    "",
+    "All other London boroughs and the whole of the UK are also covered.",
     "",
     "## About Northstar",
     "",

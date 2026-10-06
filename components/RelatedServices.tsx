@@ -28,7 +28,7 @@ export default function RelatedServices({ current }: { current: string }) {
             Not sure what you need? Ask us →
           </Link>
         </div>
-        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {related.map((service) => (
             <Link
               key={service.href}

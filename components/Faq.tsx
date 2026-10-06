@@ -86,13 +86,15 @@ export const faqs: FaqItem[] = [
   {
     question: "Which areas do you cover?",
     answer:
-      "We are based in Pinner, North West London, and carry out domestic moves across London and the whole UK, commercial relocations, and international moves worldwide by road, sea and air.",
+      "We are based in Pinner, North West London. Harrow, Ruislip, Northwood, Stanmore, Watford, Uxbridge, Wembley and the rest of North West London are local to us, and we carry out domestic moves across London and the whole UK, commercial relocations, and international moves worldwide by road, sea and air.",
     content: (
       <p>
-        We are based in Pinner, North West London, and carry out{" "}
-        <Link href="/domestic-moves">domestic moves</Link> across London and
-        the whole UK, <Link href="/commercial-moves">commercial
-        relocations</Link>, and{" "}
+        We are based in Pinner, North West London. Harrow, Ruislip, Northwood,
+        Stanmore, Watford, Uxbridge, Wembley and the rest of North West London
+        are local to us — see <Link href="/areas">all the areas we cover</Link>.
+        We carry out <Link href="/domestic-moves">domestic moves</Link> across
+        London and the whole UK,{" "}
+        <Link href="/commercial-moves">commercial relocations</Link>, and{" "}
         <Link href="/international-moves">international moves</Link> worldwide
         by road, sea and air.
       </p>

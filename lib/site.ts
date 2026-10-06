@@ -14,6 +14,10 @@ export const site = {
     { label: "+44 (0)800 170 1188", href: "tel:+448001701188" },
   ],
   mobile: { label: "+44 (0)7711 198611", href: "tel:+447711198611" },
+  /** WhatsApp on the mobile number — customers send photos for quick quotes. */
+  whatsapp: {
+    href: "https://wa.me/447711198611?text=Hi%20Northstar%2C%20I%27d%20like%20a%20removals%20quote.",
+  },
   address: ["Unit 1, Leeway House", "Leeway Close, Pinner", "HA5 4SE"],
 };
 
@@ -22,12 +26,15 @@ export const services = [
   { title: "Commercial Moves", href: "/commercial-moves" },
   { title: "International Moves", href: "/international-moves" },
   { title: "Storage Solutions", href: "/storage-solutions" },
+  { title: "Packing Service", href: "/packing-service" },
+  { title: "Piano Removals", href: "/piano-removals" },
 ] as const;
 
 export const navLinks = [
   { title: "Home", href: "/" },
   { title: "Moving Services", href: "#", children: services },
   { title: "White Glove Service", href: "/white-glove-service" },
+  { title: "Areas We Cover", href: "/areas" },
   { title: "About Us", href: "/about-us" },
   { title: "Contact Us", href: "/contact-us" },
 ] as const;
@@ -68,6 +75,20 @@ export const serviceCards = [
     description:
       "Our bespoke premium service for fine art, antiques and valuables.",
   },
+  {
+    title: "Packing Service",
+    href: "/packing-service",
+    image: "/images/moving-team.jpg",
+    description:
+      "Full, part or fragile-only packing by professionals, with materials supplied.",
+  },
+  {
+    title: "Piano Removals",
+    href: "/piano-removals",
+    image: "/images/white-glove.jpg",
+    description:
+      "Upright and grand pianos moved by a trained crew with purpose-built equipment.",
+  },
 ] as const;
 
 export const legalLinks = [
@@ -82,6 +103,9 @@ export const footerHelpLinks = [
   { title: "Commercial Moves", href: "/commercial-moves" },
   { title: "Storage Solutions", href: "/storage-solutions" },
   { title: "White Glove Service", href: "/white-glove-service" },
+  { title: "Packing Service", href: "/packing-service" },
+  { title: "Piano Removals", href: "/piano-removals" },
+  { title: "Areas We Cover", href: "/areas" },
   { title: "Reviews", href: "/reviews" },
   { title: "Awards", href: "/awards" },
 ] as const;

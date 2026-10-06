@@ -8,9 +8,9 @@ import CtaBanner from "@/components/CtaBanner";
 import Star from "@/components/Star";
 
 export const metadata: Metadata = {
-  title: "Commercial Moves",
+  title: "Office Removals London | Commercial Moves & Move Management",
   description:
-    "Office removals and move management throughout London and the home counties. IT relocation, move planning, professional packing, storage and recycling.",
+    "Office removals in London and the home counties from an award-winning commercial mover based in Pinner. Move management, IT relocation, professional packing, storage and recycling, carried out of hours to minimise downtime.",
   alternates: { canonical: "/commercial-moves" },
 };
 
@@ -101,15 +101,15 @@ export default function CommercialMoves() {
   return (
     <>
       <PageHero
-        title="Commercial Moves"
-        subtitle="Northstar: Your Trusted Partner in Office Removals and Move Management"
+        title="Office Removals London"
+        subtitle="Commercial moves and move management across London and the home counties — planned in detail, carried out of hours, with the same consultant on site from survey to setup"
         image="/images/office-move.jpg"
         imageAlt="An office relocation in progress"
       />
       <ServiceJsonLd
-        name="Commercial Moves"
+        name="Office Removals London"
         serviceType="Office and commercial removals"
-        description="Office removals and move management throughout London and the home counties. IT relocation, move planning, professional packing, storage and recycling."
+        description="Office removals in London and the home counties. Move management, IT relocation, professional packing, storage and recycling, carried out of hours to minimise downtime."
         path="/commercial-moves"
         image="/images/office-move.jpg"
       />
@@ -120,18 +120,18 @@ export default function CommercialMoves() {
         <div className="grid items-center gap-12 lg:grid-cols-2">
           <div>
             <h2 className="font-display text-2xl font-black italic text-navy-950 sm:text-3xl">
-              Effortless Commercial Business/Office Relocations — Every Time
+              Office removals in London without the downtime
             </h2>
             <div className="mt-6 space-y-5 leading-relaxed text-slate-700">
               <p>
                 Whether you&rsquo;re moving to a new office or reorganising
-                your existing offices Northstar is your trusted partner for
-                seamless commercial moves throughout the London area and home
-                counties. Based in Pinner, Harrow, Northstar specialises in
-                office removals, move management, and secure storage solutions.
-                We pride ourselves on providing exceptional, hands-on service,
-                with detailed planning, skilled staff, and careful execution to
-                ensure every move is stress-free.
+                your existing one, Northstar is your partner for office
+                removals throughout London and the home counties. Based in
+                Pinner, Harrow, we specialise in office removals, move
+                management and secure storage, from small practices to
+                multi-floor relocations. Most of our commercial moves are
+                carried out in the evening or at the weekend, so your team
+                leaves on Friday and starts work in the new premises on Monday.
               </p>
               <p>
                 A unique feature of our service: the same expert you meet at

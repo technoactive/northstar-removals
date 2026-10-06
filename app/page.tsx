@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/lib/site";
+import { areas } from "@/lib/areas";
 import Star, { FiveStars } from "@/components/Star";
 import TrustBar from "@/components/TrustBar";
 import Faq from "@/components/Faq";
@@ -33,6 +34,20 @@ const serviceCards = [
     image: "/images/storage-1.jpg",
     description:
       "Secure, flexible storage options for your possessions, short or long-term.",
+  },
+  {
+    title: "Packing Service",
+    href: "/packing-service",
+    image: "/images/moving-team.jpg",
+    description:
+      "Full, part or fragile-only packing by professionals, with all materials supplied.",
+  },
+  {
+    title: "Piano Removals",
+    href: "/piano-removals",
+    image: "/images/white-glove.jpg",
+    description:
+      "Upright and grand pianos moved by a trained crew with purpose-built equipment.",
   },
 ];
 
@@ -197,7 +212,7 @@ export default function Home() {
           <h2 className="mt-3 text-center font-display text-3xl font-black italic text-navy-950 sm:text-5xl">
             Moving Services
           </h2>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {serviceCards.map((card) => (
               <Link
                 key={card.href}
@@ -407,6 +422,54 @@ export default function Home() {
             >
               Read all reviews →
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Areas we cover */}
+      <section aria-labelledby="areas-heading" className="bg-slate-50">
+        <div className="mx-auto max-w-7xl px-4 py-20">
+          <div className="grid items-start gap-10 lg:grid-cols-[2fr_3fr]">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.25em] text-brand-600">
+                Where we work
+              </p>
+              <h2
+                id="areas-heading"
+                className="mt-3 font-display text-3xl font-black italic text-navy-950 sm:text-4xl"
+              >
+                Your local removal company in North West London
+              </h2>
+              <p className="mt-4 leading-relaxed text-slate-600">
+                Our depot is in Pinner, so Harrow, Ruislip, Northwood, Watford
+                and the rest of North West London are local work for us — and
+                we move families and businesses across the whole of London,
+                the UK and worldwide from there.
+              </p>
+              <Link
+                href="/areas"
+                className="mt-6 inline-block font-bold text-brand-600 underline-offset-4 hover:underline"
+              >
+                See every area we cover →
+              </Link>
+            </div>
+            <ul className="grid gap-3 sm:grid-cols-2">
+              {areas.map((a) => (
+                <li key={a.slug}>
+                  <Link
+                    href={`/areas/${a.slug}`}
+                    className="group flex items-center justify-between gap-3 rounded-2xl bg-white px-5 py-3.5 ring-1 ring-navy-900/5 transition hover:-translate-y-0.5 hover:shadow-lg"
+                  >
+                    <span className="font-semibold text-navy-950">
+                      Removals {a.name}
+                    </span>
+                    <span className="shrink-0 text-xs font-semibold text-slate-500">
+                      ~{a.driveMinutes} min
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>

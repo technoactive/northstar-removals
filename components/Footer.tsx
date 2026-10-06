@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { footerHelpLinks, legalLinks, site } from "@/lib/site";
+import { areas } from "@/lib/areas";
 import Star from "@/components/Star";
 
 export default function Footer() {
@@ -105,6 +106,33 @@ export default function Footer() {
           </Link>
         </div>
       </div>
+      <nav aria-label="Areas we cover" className="border-t border-white/10">
+        <div className="mx-auto max-w-7xl px-4 py-6">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-white/50">
+            Removals across North West London &amp; Hertfordshire
+          </p>
+          <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-sm">
+            {areas.map((a) => (
+              <li key={a.slug}>
+                <Link
+                  href={`/areas/${a.slug}`}
+                  className="text-white/60 transition hover:text-white"
+                >
+                  Removals {a.name}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Link
+                href="/areas"
+                className="font-semibold text-brand-500 transition hover:text-white"
+              >
+                All areas →
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </nav>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-4 py-5 text-xs text-white/50 sm:flex-row">
           <p>

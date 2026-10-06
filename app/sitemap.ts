@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteUrl } from "@/lib/site";
+import { areas } from "@/lib/areas";
 
 /**
  * Every indexable page on the site.
@@ -46,6 +47,22 @@ const pages: {
     lastModified: "2026-10-06",
     images: ["/images/white-glove.jpg"],
   },
+  {
+    path: "/packing-service",
+    lastModified: "2026-10-06",
+    images: ["/images/moving-team.jpg"],
+  },
+  {
+    path: "/piano-removals",
+    lastModified: "2026-10-06",
+    images: ["/images/white-glove.jpg"],
+  },
+  { path: "/areas", lastModified: "2026-10-06" },
+  ...areas.map((a) => ({
+    path: `/areas/${a.slug}`,
+    lastModified: "2026-10-06",
+    images: [a.image],
+  })),
   { path: "/about-us", lastModified: "2026-10-06" },
   { path: "/reviews", lastModified: "2026-10-06" },
   {

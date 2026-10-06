@@ -37,6 +37,10 @@ const securityHeaders = [
  * 301s for URLs from the previous WordPress site (taken from its Yoast
  * sitemap) that have no direct equivalent here, so existing search
  * rankings and backlinks carry over to the closest relevant page.
+ *
+ * Old area-specific URLs point at the matching /areas/ page where one
+ * exists (Hampstead, Belsize Park, Kensington, North London); the rest go
+ * to the closest service page.
  */
 const legacyRedirects = [
   { source: "/removals-hints-tips-and-guidance", destination: "/" },
@@ -53,18 +57,18 @@ const legacyRedirects = [
   },
   {
     source: "/office-relocation-removals-north-london",
-    destination: "/commercial-moves",
+    destination: "/areas/north-london",
   },
-  { source: "/workplace-removals-hampstead", destination: "/commercial-moves" },
+  { source: "/workplace-removals-hampstead", destination: "/areas/hampstead" },
   { source: "/furniture-storage-victoria", destination: "/storage-solutions" },
   { source: "/high-value-storage-victoria", destination: "/storage-solutions" },
   {
     source: "/long-term-storage-kensington",
-    destination: "/storage-solutions",
+    destination: "/areas/kensington",
   },
   {
     source: "/secure-furniture-storage-belsize-park",
-    destination: "/storage-solutions",
+    destination: "/areas/hampstead",
   },
   { source: "/premium-removals-london", destination: "/white-glove-service" },
 ];
