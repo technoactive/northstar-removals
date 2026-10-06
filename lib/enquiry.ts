@@ -14,6 +14,8 @@ export type Enquiry = {
   phone: string;
   hearAbout: string;
   hearAboutOther?: string;
+  /** Explicit opt-in to occasional marketing emails (unchecked by default). */
+  marketingOptIn: boolean;
   from: AddressDetails;
   to: AddressDetails;
   movingDate?: string;
@@ -72,6 +74,7 @@ export function parseEnquiry(formData: FormData): ParseResult {
   const phone = str(formData, "phone");
   const hearAbout = str(formData, "hear-about");
   const hearAboutOther = str(formData, "hear-about-other") || undefined;
+  const marketingOptIn = formData.get("marketing") === "yes";
 
   if (!name) return { ok: false, error: "Please enter your name." };
   if (!EMAIL_RE.test(email)) {
@@ -109,6 +112,7 @@ export function parseEnquiry(formData: FormData): ParseResult {
     phone,
     hearAbout,
     hearAboutOther,
+    marketingOptIn,
     from,
     to,
     movingDate,
@@ -188,6 +192,7 @@ function buildSections(e: Enquiry): Section[] {
         ? `Other — ${e.hearAboutOther}`
         : e.hearAbout,
     ],
+    ["Marketing emails", e.marketingOptIn ? "Opted in" : "Not opted in"],
   ];
 
   const move: [string, string][] = [["Type of move", MOVE_LABEL[e.moveType]]];

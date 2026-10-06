@@ -11,6 +11,8 @@ export default function Select({
   name,
   id,
   "aria-labelledby": ariaLabelledBy,
+  "aria-describedby": ariaDescribedBy,
+  "aria-invalid": ariaInvalid,
 }: {
   options: string[];
   value: string;
@@ -20,6 +22,8 @@ export default function Select({
   name?: string;
   id?: string;
   "aria-labelledby"?: string;
+  "aria-describedby"?: string;
+  "aria-invalid"?: boolean;
 }) {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -97,10 +101,16 @@ export default function Select({
         aria-expanded={open}
         aria-controls={listboxId}
         aria-haspopup="listbox"
+        aria-describedby={ariaDescribedBy}
+        aria-invalid={ariaInvalid}
         onClick={() => (open ? setOpen(false) : openList())}
         onKeyDown={onKeyDown}
-        className={`flex w-full items-center justify-between gap-3 rounded-lg border bg-white px-4 py-2.5 text-left text-sm transition focus:border-navy-700 focus:outline-none focus:ring-2 focus:ring-navy-700/25 ${
-          open ? "border-navy-700 ring-2 ring-navy-700/25" : "border-navy-900/15"
+        className={`flex w-full items-center justify-between gap-3 rounded-xl border bg-white px-4 py-3 text-left text-base transition focus:outline-none focus:ring-2 sm:text-sm ${
+          ariaInvalid
+            ? "border-red-500 focus:border-red-600 focus:ring-red-500/25"
+            : open
+              ? "border-navy-700 ring-2 ring-navy-700/25"
+              : "border-navy-900/15 focus:border-navy-700 focus:ring-navy-700/25"
         } ${value ? "text-navy-950" : "text-slate-500"}`}
       >
         {value || placeholder}

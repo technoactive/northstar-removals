@@ -39,6 +39,8 @@ export default function DatePicker({
   placeholder = "Select a date…",
   id,
   "aria-labelledby": ariaLabelledBy,
+  "aria-describedby": ariaDescribedBy,
+  "aria-invalid": ariaInvalid,
 }: {
   value: Date | null;
   onChange: (date: Date) => void;
@@ -47,6 +49,8 @@ export default function DatePicker({
   placeholder?: string;
   id?: string;
   "aria-labelledby"?: string;
+  "aria-describedby"?: string;
+  "aria-invalid"?: boolean;
 }) {
   const today = startOfDay(new Date());
   const [open, setOpen] = useState(false);
@@ -96,9 +100,15 @@ export default function DatePicker({
         }
         aria-haspopup="dialog"
         aria-expanded={open}
+        aria-describedby={ariaDescribedBy}
+        data-invalid={ariaInvalid || undefined}
         onClick={() => setOpen((v) => !v)}
-        className={`flex w-full items-center justify-between gap-3 rounded-lg border bg-white px-4 py-2.5 text-left text-sm transition focus:border-navy-700 focus:outline-none focus:ring-2 focus:ring-navy-700/25 ${
-          open ? "border-navy-700 ring-2 ring-navy-700/25" : "border-navy-900/15"
+        className={`flex w-full items-center justify-between gap-3 rounded-xl border bg-white px-4 py-3 text-left text-base transition focus:outline-none focus:ring-2 sm:text-sm ${
+          ariaInvalid
+            ? "border-red-500 focus:border-red-600 focus:ring-red-500/25"
+            : open
+              ? "border-navy-700 ring-2 ring-navy-700/25"
+              : "border-navy-900/15 focus:border-navy-700 focus:ring-navy-700/25"
         } ${value ? "text-navy-950" : "text-slate-500"}`}
       >
         {value ? formatDisplay(value) : placeholder}
