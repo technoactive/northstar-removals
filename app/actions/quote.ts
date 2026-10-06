@@ -1,52 +1,56 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import { Resend } from "resend";
 import {
+  ackHtml,
+  ackSubject,
+  ackText,
   enquiryHtml,
   enquirySubject,
   enquiryText,
   parseEnquiry,
 } from "@/lib/enquiry";
 
-export type QuoteFormState = { error?: string };
+export type QuoteFormState = { ok?: boolean; error?: string };
 
-/** Submissions faster than this are almost certainly bots. */
+/** Submissions completed faster than this are almost certainly bots. */
 const MIN_FILL_TIME_MS = 3_000;
 
-const FROM = process.env.CONTACT_FROM_EMAIL ?? "Northstar Website <website@northstar-removals.com>";
+/** Sender for the internal enquiry notification. */
+const FROM =
+  process.env.CONTACT_FROM_EMAIL ??
+  "Northstar Website <website@northstar-removals.com>";
+/** Where enquiries are delivered. */
 const TO = process.env.CONTACT_TO_EMAIL ?? "info@northstar-removals.com";
-
 /**
- * Handles the quote form. The ONLY email the website sends is this enquiry
- * notification to the Northstar team — customers never receive automated mail
- * from the website (any auto-reply is handled by the info@ mailbox itself).
+ * Sender for the customer acknowledgement. Sent from info@ so that when the
+ * customer hits Reply it lands in the same mailbox that holds their enquiry.
  */
+const ACK_FROM =
+  process.env.CONTACT_ACK_FROM_EMAIL ??
+  "Northstar Removals <info@northstar-removals.com>";
+
+const GENERIC_ERROR =
+  "Sorry, something went wrong sending your enquiry. Please try again, or call us on +44 (0)20 8868 9414.";
+
 export async function submitQuote(
   _prev: QuoteFormState,
   formData: FormData,
 ): Promise<QuoteFormState> {
-  // ── Spam checks ───────────────────────────────────────────────────────
-  // Honeypot: real users never see or fill this field. Timing: humans take
-  // more than a few seconds. Bots that trip either check are sent to the
-  // thank-you page so they can't tell they were filtered.
+  // Anti-spam: honeypot filled or form completed implausibly fast.
+  // Pretend success so bots learn nothing.
   const honeypot = formData.get("company_website");
   const started = Number(formData.get("form_started"));
   const tooFast =
-    Number.isFinite(started) && started > 0 && Date.now() - started < MIN_FILL_TIME_MS;
+    Number.isFinite(started) &&
+    started > 0 &&
+    Date.now() - started < MIN_FILL_TIME_MS;
+  if (honeypot || tooFast) return { ok: true };
 
-  if (honeypot || tooFast) {
-    redirect("/thank-you");
-  }
-
-  // ── Validation ────────────────────────────────────────────────────────
   const parsed = parseEnquiry(formData);
-  if (!parsed.ok) {
-    return { error: parsed.error };
-  }
+  if (!parsed.ok) return { error: parsed.error };
   const enquiry = parsed.enquiry;
 
-  // ── Send ──────────────────────────────────────────────────────────────
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) {
     console.error("[quote] RESEND_API_KEY is not set");
@@ -57,6 +61,9 @@ export async function submitQuote(
   }
 
   const resend = new Resend(apiKey);
+  const ref = `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+
+  // 1. The enquiry itself, to the office. This is the one that must succeed.
   const { error } = await resend.emails.send({
     from: FROM,
     to: [TO],
@@ -64,21 +71,34 @@ export async function submitQuote(
     subject: enquirySubject(enquiry),
     text: enquiryText(enquiry),
     html: enquiryHtml(enquiry),
-    headers: {
-      // Transactional one-to-one mail: tell receivers this is not bulk.
-      "X-Entity-Ref-ID": `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`,
-    },
+    headers: { "X-Entity-Ref-ID": ref },
     tags: [{ name: "type", value: `quote-${enquiry.moveType}` }],
   });
 
   if (error) {
     console.error("[quote] Resend error:", error);
-    return {
-      error:
-        "Sorry, something went wrong sending your enquiry. Please try again, or call us on +44 (0)20 8868 9414.",
-    };
+    return { error: GENERIC_ERROR };
   }
 
-  // redirect() throws, so it must live outside any try/catch.
-  redirect("/thank-you");
+  // 2. Acknowledgement to the customer, from info@. Best effort: a failure
+  //    here must never make a successfully delivered enquiry look like it
+  //    failed, so we only log it.
+  const ack = await resend.emails.send({
+    from: ACK_FROM,
+    to: [`${enquiry.name} <${enquiry.email}>`],
+    replyTo: "Northstar Removals <info@northstar-removals.com>",
+    subject: ackSubject(),
+    text: ackText(enquiry),
+    html: ackHtml(enquiry),
+    headers: {
+      "X-Entity-Ref-ID": `${ref}-ack`,
+      // Transactional one-off; tells mailbox providers not to auto-reply.
+      "Auto-Submitted": "auto-replied",
+      "X-Auto-Response-Suppress": "All",
+    },
+    tags: [{ name: "type", value: "quote-ack" }],
+  });
+  if (ack.error) console.error("[quote] Ack email error:", ack.error);
+
+  return { ok: true };
 }

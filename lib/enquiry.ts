@@ -296,3 +296,126 @@ export function enquiryHtml(e: Enquiry): string {
 </body>
 </html>`;
 }
+
+/* -------------------------------------------------------------------------- */
+/*  Customer acknowledgement (sent from info@ after the enquiry is delivered) */
+/* -------------------------------------------------------------------------- */
+
+const PHONE_MAIN = "+44 (0)20 8868 9414";
+const PHONE_FREE = "+44 (0)800 170 1188";
+
+function firstName(name: string): string {
+  return name.trim().split(/\s+/)[0] || "there";
+}
+
+/** Only the sections the customer needs to see reflected back. */
+function summarySections(e: Enquiry): Section[] {
+  return buildSections(e).filter((s) => s.title !== "Customer");
+}
+
+export function ackSubject(): string {
+  return `We've received your enquiry — Northstar Removals`;
+}
+
+export function ackText(e: Enquiry): string {
+  const lines: string[] = [
+    `Hi ${firstName(e.name)},`,
+    "",
+    "Thank you for getting in touch with Northstar Removals. We've received your enquiry and one of our team will be in contact shortly to discuss your move and arrange your free, no-obligation quotation.",
+    "",
+    "WHAT HAPPENS NEXT",
+    "1. We review your details.",
+    "2. We call or email you to confirm the finer points, and if helpful arrange a free video or home survey.",
+    "3. You receive a personalised fixed-price quotation with no hidden fees.",
+    "",
+    `Need to speak to someone sooner? Call us on ${PHONE_MAIN} or freephone ${PHONE_FREE}, or simply reply to this email.`,
+    "",
+    "A COPY OF WHAT YOU SENT US",
+    "",
+  ];
+  for (const s of summarySections(e)) {
+    lines.push(s.title.toUpperCase());
+    for (const [k, v] of s.rows) lines.push(`${k}: ${v}`);
+    lines.push("");
+  }
+  lines.push(
+    "Kind regards,",
+    "The Northstar Removals team",
+    "For a Brilliant Move!",
+    "",
+    "Northstar Removals & Storage",
+    "Unit 1, Leeway House, Leeway Close, Pinner HA5 4SE",
+    "https://northstar-removals.com",
+    "",
+    "You are receiving this one-off email because you submitted the quote form on northstar-removals.com. If that wasn't you, please ignore this message or let us know by replying.",
+  );
+  return lines.join("\n");
+}
+
+export function ackHtml(e: Enquiry): string {
+  const sections = summarySections(e)
+    .map(
+      (s) => `
+      <h3 style="margin:22px 0 6px;font:700 12px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#5b6172;">${escapeHtml(s.title)}</h3>
+      <table role="presentation" cellpadding="0" cellspacing="0" style="width:100%;border-collapse:collapse;font:14px/1.5 Arial,Helvetica,sans-serif;color:#1e2230;">
+        ${s.rows
+          .map(
+            ([k, v]) => `
+          <tr>
+            <td style="padding:7px 12px 7px 0;border-top:1px solid #e4e6ee;width:38%;color:#5b6172;vertical-align:top;">${escapeHtml(k)}</td>
+            <td style="padding:7px 0;border-top:1px solid #e4e6ee;font-weight:600;vertical-align:top;white-space:pre-wrap;">${escapeHtml(v)}</td>
+          </tr>`,
+          )
+          .join("")}
+      </table>`,
+    )
+    .join("");
+
+  const step = (n: number, title: string, body: string) => `
+    <tr>
+      <td style="padding:10px 14px 10px 0;vertical-align:top;">
+        <div style="width:28px;height:28px;border-radius:14px;background:#171636;color:#fff;font:800 13px/28px Arial,Helvetica,sans-serif;text-align:center;">${n}</div>
+      </td>
+      <td style="padding:10px 0;vertical-align:top;font:14px/1.5 Arial,Helvetica,sans-serif;color:#1e2230;">
+        <strong>${title}</strong><br><span style="color:#5b6172;">${body}</span>
+      </td>
+    </tr>`;
+
+  return `<!doctype html>
+<html lang="en">
+<body style="margin:0;padding:24px;background:#f5f6fa;">
+  <div style="max-width:640px;margin:0 auto;background:#ffffff;border-radius:12px;overflow:hidden;border:1px solid #e4e6ee;">
+    <div style="background:#171636;padding:26px 28px;">
+      <p style="margin:0;font:700 11px/1.2 Arial,Helvetica,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#ff6b74;">Northstar Removals &amp; Storage</p>
+      <h1 style="margin:8px 0 0;font:800 24px/1.2 Arial,Helvetica,sans-serif;color:#ffffff;">Thank you — we've received your enquiry</h1>
+    </div>
+    <div style="padding:24px 28px 28px;font:15px/1.6 Arial,Helvetica,sans-serif;color:#1e2230;">
+      <p style="margin:0 0 14px;">Hi ${escapeHtml(firstName(e.name))},</p>
+      <p style="margin:0 0 14px;">Thank you for getting in touch with Northstar Removals. One of our team will be in contact shortly to discuss your move and arrange your <strong>free, no-obligation quotation</strong>.</p>
+
+      <h2 style="margin:26px 0 4px;font:800 16px/1.3 Arial,Helvetica,sans-serif;color:#171636;">What happens next</h2>
+      <table role="presentation" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+        ${step(1, "We review your details", "Usually the same working day.")}
+        ${step(2, "We get in touch", "To confirm the finer points and, if helpful, arrange a free video or home survey.")}
+        ${step(3, "You receive your quotation", "A personalised fixed price with no hidden fees.")}
+      </table>
+
+      <p style="margin:22px 0 0;padding:14px 16px;background:#f5f6fa;border-radius:8px;font-size:14px;color:#38404f;">
+        Need to speak to someone sooner? Call <a href="tel:+442088689414" style="color:#d81f2a;font-weight:700;text-decoration:none;">${PHONE_MAIN}</a>
+        or freephone <a href="tel:+448001701188" style="color:#d81f2a;font-weight:700;text-decoration:none;">${PHONE_FREE}</a>, or simply reply to this email.
+      </p>
+
+      <h2 style="margin:30px 0 0;font:800 16px/1.3 Arial,Helvetica,sans-serif;color:#171636;">A copy of what you sent us</h2>
+      ${sections}
+
+      <p style="margin:30px 0 0;">Kind regards,<br><strong>The Northstar Removals team</strong><br><em style="color:#d81f2a;">For a Brilliant Move!</em></p>
+    </div>
+    <div style="padding:18px 28px;background:#f5f6fa;border-top:1px solid #e4e6ee;font:12px/1.6 Arial,Helvetica,sans-serif;color:#8a90a2;">
+      Northstar Removals &amp; Storage · Unit 1, Leeway House, Leeway Close, Pinner HA5 4SE ·
+      <a href="https://northstar-removals.com" style="color:#8a90a2;">northstar-removals.com</a><br>
+      You are receiving this one-off email because you submitted the quote form on our website. If that wasn't you, please ignore it or let us know by replying.
+    </div>
+  </div>
+</body>
+</html>`;
+}

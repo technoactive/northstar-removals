@@ -1,6 +1,7 @@
 "use client";
 
-import { cloneElement, useActionState, useId, useState } from "react";
+import { cloneElement, useActionState, useEffect, useId, useRef, useState } from "react";
+import { useRouter } from "next/navigation";
 import Select from "@/components/Select";
 import DatePicker from "@/components/DatePicker";
 import { submitQuote, type QuoteFormState } from "@/app/actions/quote";
@@ -249,6 +250,51 @@ export default function QuoteForm() {
   // Captured once on mount; the server rejects submissions made implausibly fast.
   const [startedAt] = useState(() => Date.now());
   const [state, formAction, pending] = useActionState(submitQuote, initialState);
+  const router = useRouter();
+  const errorRef = useRef<HTMLDivElement>(null);
+
+  // On success, show the confirmation panel immediately (below) and move to
+  // the thank-you page. If the navigation is slow or fails for any reason,
+  // the customer still sees a clear acknowledgement right here.
+  useEffect(() => {
+    if (state.ok) router.push("/thank-you");
+  }, [state.ok, router]);
+
+  // Make sure a validation/sending error is never hidden off-screen.
+  useEffect(() => {
+    if (state.error) {
+      errorRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [state.error]);
+
+  if (state.ok) {
+    return (
+      <div
+        role="status"
+        aria-live="polite"
+        className="rounded-2xl bg-slate-50 p-8 text-center ring-1 ring-navy-900/5 sm:p-12"
+      >
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" className="h-8 w-8">
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </div>
+        <p className="mt-6 text-xs font-bold uppercase tracking-[0.25em] text-brand-600">Enquiry received</p>
+        <h2 className="mt-2 text-3xl font-extrabold text-navy-950">Thank you!</h2>
+        <p className="mx-auto mt-4 max-w-md text-slate-700">
+          Your enquiry has been sent successfully. We&rsquo;ve emailed you a
+          copy, and one of our team will be in touch shortly to arrange your
+          free quotation.
+        </p>
+        <p className="mt-6 text-sm text-slate-500">
+          Need us sooner? Call{" "}
+          <a href="tel:+442088689414" className="font-bold text-brand-600">
+            +44 (0)20 8868 9414
+          </a>
+        </p>
+      </div>
+    );
+  }
 
   const selectMoveType = (type: MoveType) => {
     setMoveType(type);
@@ -512,6 +558,7 @@ export default function QuoteForm() {
 
       {state.error && (
         <div
+          ref={errorRef}
           role="alert"
           className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700"
         >

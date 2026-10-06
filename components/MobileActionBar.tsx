@@ -1,7 +1,19 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { site } from "@/lib/site";
 
+/** Pages where a "Get a free quote" bar would just point at itself. */
+const HIDDEN_ON = ["/contact-us", "/thank-you"];
+
 export default function MobileActionBar() {
+  const pathname = usePathname();
+  // On the quote form itself the orange bar sat directly under the submit
+  // button and linked back to the same page — easy to tap by mistake and
+  // "nothing happens". Hide it there and on the confirmation page.
+  if (HIDDEN_ON.includes(pathname)) return null;
+
   return (
     <>
       {/* Spacer so page content isn't hidden behind the fixed bar */}

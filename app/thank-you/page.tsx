@@ -63,9 +63,11 @@ export default function ThankYouPage() {
             Thank you!
           </h1>
           <p className="mt-5 max-w-2xl text-lg text-white/80">
-            Your quote request is on its way to our team. We&rsquo;ll be in
-            touch within one working day to discuss your move and arrange your
-            free, no-obligation survey.
+            Your quote request has been sent to our team and we&rsquo;ve
+            emailed you a copy for your records (check your junk folder if it
+            hasn&rsquo;t arrived in a few minutes). We&rsquo;ll be in touch
+            within one working day to discuss your move and arrange your free,
+            no-obligation survey.
           </p>
           <p className="mt-6 text-sm text-white/60">
             Need us sooner? Call{" "}

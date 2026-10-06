@@ -14,17 +14,26 @@ Server Action (app/actions/quote.ts)
   · validation (lib/enquiry.ts)
         │
         ▼
-Resend API ──► From:     Northstar Website <website@northstar-removals.com>
+Resend API ──► 1. Enquiry
+               From:     Northstar Website <website@northstar-removals.com>
                To:       info@northstar-removals.com
                Reply-To: the customer
+           ──► 2. Acknowledgement (only after 1 succeeds)
+               From:     Northstar Removals <info@northstar-removals.com>
+               To:       the customer
+               Reply-To: info@northstar-removals.com
         │
         ▼
-Customer lands on /thank-you
+Customer sees inline "Thank you" and lands on /thank-you
 ```
 
-**The website sends exactly one email per enquiry — to `info@`.** It never
-emails the customer. Any acknowledgement or auto-reply to the customer is sent
-from the `info@` mailbox itself, so it comes from a real, monitored address.
+**Two emails per enquiry.** The enquiry goes to `info@`; the customer then
+receives an acknowledgement *from `info@`* ("We've received your enquiry")
+containing next steps, phone numbers and a copy of what they submitted. It is
+sent through Resend using the verified domain, so it passes SPF/DKIM/DMARC,
+and when the customer replies it lands in the `info@` inbox next to their
+enquiry. If the acknowledgement fails for any reason it is only logged — a
+delivered enquiry is never reported to the customer as a failure.
 
 Pressing **Reply** on an enquiry in the `info@` inbox writes to the customer
 (Reply-To), not to `website@`.
@@ -90,13 +99,12 @@ The enquiry arrives at the client's own mailbox. Three things on their side:
    `northstar-removals.com`. If their replies to customers ever land in spam,
    that is the first thing to check. The DMARC record in step 2 covers both the
    website's mail and theirs.
-3. **Auto-reply caveat** — a mailbox-level auto-responder (Gmail "Vacation
-   responder", Outlook "Automatic replies") replies to the *From* address,
-   which is `website@`, **not** to the customer. To acknowledge customers
-   automatically from `info@`, use a *rule* that replies to the Reply-To
-   address, or have the team send a short personal reply (which converts far
-   better anyway). If a true automated confirmation is wanted later, the
-   website can send it from `info@` via Resend — currently disabled by design.
+3. **Do not add a mailbox auto-responder for enquiries.** The website already
+   sends the customer acknowledgement from `info@`. A mailbox-level
+   auto-reply (Outlook "Automatic replies") would go to the *From* address of
+   the enquiry — `website@` — not to the customer, so it adds nothing. The
+   acknowledgement carries `Auto-Submitted`/`X-Auto-Response-Suppress`
+   headers so the customer's own out-of-office will not bounce back to `info@`.
 
 ## 5. Test before launch
 
