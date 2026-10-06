@@ -127,6 +127,11 @@ function validate(fd: FormData, moveType: MoveType): Errors {
  * Label + hint + error + a single control. The control receives a stable id
  * (its `name`), `aria-describedby` for hint/error and `aria-invalid`, which
  * is what screen readers, browsers and AI agents need to fill it correctly.
+ *
+ * Layout rule: fields that share a two-column grid row must either ALL have a
+ * one-line hint or NONE of them, otherwise their controls sit at different
+ * heights. Keep hints short enough not to wrap at ~250px (the narrowest
+ * column, at the 1024px breakpoint next to the sidebar).
  */
 function Field({
   name,
@@ -690,7 +695,7 @@ export default function QuoteForm() {
             <Field
               name="moving-date"
               label="Moving date"
-              hint={isInternational ? "Leave blank if you are still planning." : "An approximate date is fine."}
+              hint={isInternational ? "Leave blank if you're still planning." : "An approximate date is fine."}
               required={!isInternational}
               optional={isInternational}
               error={errors["moving-date"]}
@@ -706,7 +711,13 @@ export default function QuoteForm() {
               />
             </Field>
             {isInternational && (
-              <Field name="payer" label="Who is paying for the move?" required error={errors["payer"]}>
+              <Field
+                name="payer"
+                label="Who is paying for the move?"
+                hint="Needed for the quote and paperwork."
+                required
+                error={errors["payer"]}
+              >
                 <Select
                   options={payerOptions}
                   value={payer}
