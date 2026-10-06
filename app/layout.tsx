@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Archivo, Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Header from "@/components/Header";
 import PreFooter from "@/components/PreFooter";
@@ -7,21 +7,27 @@ import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import MobileActionBar from "@/components/MobileActionBar";
 
-const geistSans = Geist({
+// Fonts are self-hosted (variable woff2, latin subset) so the build never
+// depends on Google Fonts. This avoids a Turbopack build failure on Vercel
+// (vercel/next.js#99114) and removes a third-party request for visitors.
+const geistSans = localFont({
+  src: "./fonts/geist-latin.woff2",
+  weight: "100 900",
   variable: "--font-geist-sans",
-  subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const archivo = Archivo({
+const archivo = localFont({
+  src: [
+    { path: "./fonts/archivo-latin.woff2", weight: "500 900", style: "normal" },
+    {
+      path: "./fonts/archivo-italic-latin.woff2",
+      weight: "500 900",
+      style: "italic",
+    },
+  ],
   variable: "--font-archivo",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  weight: ["500", "600", "700", "800", "900"],
+  display: "swap",
 });
 
 const siteUrl = "https://www.northstar-removals.com";
@@ -104,7 +110,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${archivo.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${archivo.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
         <script
