@@ -5,20 +5,29 @@ by priority within each phase.
 
 ## Phase 1 — Required before launch
 
-### 1. Quote form backend (critical)
+### 1. Quote form backend — DONE
 
-The quote form is currently front-end only; submissions go nowhere.
+See `docs/email-setup.md` for the full flow and deliverability notes.
 
-- [ ] Server action that emails enquiries to info@northstar-removals.com
-      (Resend, or the company's existing SMTP)
-- [ ] Honeypot field + basic rate limiting for spam
-- [ ] Success ("thank you") and error states in the UI
-- [ ] SPF/DKIM records for the sending domain so emails reach the inbox
+- [x] Server Action (`app/actions/quote.ts`) emails enquiries via Resend from
+      website@northstar-removals.com to info@northstar-removals.com, with
+      Reply-To set to the customer. The website sends no customer auto-replies.
+- [x] Honeypot field + time-to-complete check for spam
+- [x] `/thank-you` page (noindex) and inline error states in the UI
+- [x] Domain verified in Resend (EU); DKIM, SPF and DMARC (`p=reject`) in
+      place — test sends pass authentication
+- [ ] Set `RESEND_API_KEY`, `CONTACT_FROM_EMAIL`, `CONTACT_TO_EMAIL` in Vercel
+      (see `.env.example`) and redeploy
+- [ ] Add a "never send to spam" rule for website@ in the info@ mailbox
 
 ### 2. Deployment and domain cutover
 
-- [ ] Deploy to hosting (Vercel recommended for Next.js)
-- [ ] Point www.northstar-removals.com at the new site
+- [x] Deployed to Vercel
+- [x] Domain pointed at Vercel via Cloudflare DNS
+- [ ] **Make `www.northstar-removals.com` the primary domain in Vercel**
+      (Project → Settings → Domains) so the apex redirects to www. Currently
+      www redirects to the apex, which conflicts with every page's canonical
+      tag, the sitemap and the old site's 20 years of www URLs.
 - [ ] Confirm the legacy 301 redirects work in production (already
       implemented in `next.config.ts`, tested locally)
 - [ ] Verify domain in Google Search Console, submit `/sitemap.xml`

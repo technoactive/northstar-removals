@@ -42,7 +42,6 @@ const legacyRedirects = [
   { source: "/removals-hints-tips-and-guidance", destination: "/" },
   { source: "/styleguide", destination: "/" },
   { source: "/sitemap", destination: "/" },
-  { source: "/thank-you", destination: "/contact-us" },
   {
     source: "/environmentally-friendly-recycling-responsible-disposal-services",
     destination: "/about-us",

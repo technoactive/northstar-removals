@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useActionState, useState } from "react";
 import Select from "@/components/Select";
 import DatePicker from "@/components/DatePicker";
-
-type MoveType = "domestic" | "international" | "commercial";
+import { submitQuote, type QuoteFormState } from "@/app/actions/quote";
+import type { MoveType } from "@/lib/enquiry";
 
 const inputClass =
   "w-full rounded-lg border border-navy-900/15 bg-white px-4 py-2.5 text-sm text-navy-950 placeholder:text-slate-400 focus:border-navy-700 focus:outline-none focus:ring-2 focus:ring-navy-700/25";
@@ -116,10 +116,12 @@ function Field({
 
 function AddressBlock({
   legend,
+  prefix,
   required,
   showBedrooms = true,
 }: {
   legend: string;
+  prefix: "from" | "to";
   required?: boolean;
   showBedrooms?: boolean;
 }) {
@@ -134,29 +136,51 @@ function AddressBlock({
           <Field label="Address / Postcode" required={required}>
             <input
               type="text"
+              name={`${prefix}-address`}
               required={required}
+              autoComplete="off"
               className={inputClass}
               placeholder="Address or postcode"
             />
           </Field>
         </div>
         <Field label="What floor">
-          <input type="text" className={inputClass} placeholder="e.g. Ground" />
+          <input
+            type="text"
+            name={`${prefix}-floor`}
+            className={inputClass}
+            placeholder="e.g. Ground"
+          />
         </Field>
         <div className="flex items-end gap-6 pb-1">
           <span className="text-sm font-semibold text-navy-950">Lift:</span>
           <label className="flex items-center gap-2 text-sm">
-            <input type="radio" name={`${legend}-lift`} className="accent-brand-600" />
+            <input
+              type="radio"
+              name={`${prefix}-lift`}
+              value="Yes"
+              className="accent-brand-600"
+            />
             Yes
           </label>
           <label className="flex items-center gap-2 text-sm">
-            <input type="radio" name={`${legend}-lift`} className="accent-brand-600" />
+            <input
+              type="radio"
+              name={`${prefix}-lift`}
+              value="No"
+              className="accent-brand-600"
+            />
             No
           </label>
         </div>
         {showBedrooms && (
           <Field label="Property size (no. of bedrooms)">
-            <input type="text" className={inputClass} placeholder="e.g. 3" />
+            <input
+              type="text"
+              name={`${prefix}-bedrooms`}
+              className={inputClass}
+              placeholder="e.g. 3"
+            />
           </Field>
         )}
       </div>
@@ -187,7 +211,12 @@ function ExtrasBlock({ commercial = false }: { commercial?: boolean }) {
       <div className="grid gap-2 sm:grid-cols-2">
         {extras.map((extra) => (
           <label key={extra} className="flex items-center gap-2 text-sm">
-            <input type="checkbox" className="accent-brand-600" />
+            <input
+              type="checkbox"
+              name="extras"
+              value={extra}
+              className="accent-brand-600"
+            />
             {extra}
           </label>
         ))}
@@ -199,42 +228,30 @@ function ExtrasBlock({ commercial = false }: { commercial?: boolean }) {
 function NotesBlock() {
   return (
     <Field label="Additional information/notes (oversize items, special requirements, access difficulties)">
-      <textarea rows={4} className={inputClass} />
+      <textarea name="notes" rows={4} maxLength={4000} className={inputClass} />
     </Field>
   );
 }
+
+const initialState: QuoteFormState = {};
 
 export default function QuoteForm() {
   const [moveType, setMoveType] = useState<MoveType>("domestic");
   const [hearAbout, setHearAbout] = useState("");
   const [movingDate, setMovingDate] = useState<Date | null>(null);
-  const [submitted, setSubmitted] = useState(false);
+  // Captured once on mount; the server rejects submissions made implausibly fast.
+  const [startedAt] = useState(() => Date.now());
+  const [state, formAction, pending] = useActionState(submitQuote, initialState);
 
   const selectMoveType = (type: MoveType) => {
     setMoveType(type);
     setMovingDate(null);
   };
 
-  if (submitted) {
-    return (
-      <div className="rounded-2xl bg-slate-50 p-10 text-center ring-1 ring-navy-900/5">
-        <h3 className="text-2xl font-extrabold text-navy-950">Thank you!</h3>
-        <p className="mt-3 text-slate-600">
-          Your enquiry has been received. We will contact you shortly to
-          discuss and evaluate your requirements, providing you with a bespoke
-          quotation.
-        </p>
-      </div>
-    );
-  }
-
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSubmitted(true);
-      }}
-      className="space-y-6 rounded-2xl bg-slate-50 p-6 ring-1 ring-navy-900/5 sm:p-10"
+      action={formAction}
+      className="relative space-y-6 rounded-2xl bg-slate-50 p-6 ring-1 ring-navy-900/5 sm:p-10"
     >
       <h2 className="text-2xl font-extrabold text-navy-950">
         How can we help make your move Brilliant?
@@ -243,15 +260,43 @@ export default function QuoteForm() {
         <span className="text-red-600">*</span> indicates required fields
       </p>
 
+      {/* Anti-spam: honeypot (hidden from humans) + time-to-complete stamp. */}
+      <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+        <label>
+          Company website
+          <input type="text" name="company_website" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
+      <input type="hidden" name="form_started" value={startedAt} />
+      <input type="hidden" name="move-type" value={moveType} />
+
       <div className="grid gap-4 sm:grid-cols-3">
         <Field label="Name" required>
-          <input type="text" required className={inputClass} />
+          <input
+            type="text"
+            name="name"
+            required
+            autoComplete="name"
+            className={inputClass}
+          />
         </Field>
         <Field label="Email" required>
-          <input type="email" required className={inputClass} />
+          <input
+            type="email"
+            name="email"
+            required
+            autoComplete="email"
+            className={inputClass}
+          />
         </Field>
         <Field label="Phone" required>
-          <input type="tel" required className={inputClass} />
+          <input
+            type="tel"
+            name="phone"
+            required
+            autoComplete="tel"
+            className={inputClass}
+          />
         </Field>
       </div>
 
@@ -267,7 +312,12 @@ export default function QuoteForm() {
 
       {hearAbout === "Other" && (
         <Field label='If "Other", please explain further below' required>
-          <input type="text" required className={inputClass} />
+          <input
+            type="text"
+            name="hear-about-other"
+            required
+            className={inputClass}
+          />
         </Field>
       )}
 
@@ -348,8 +398,8 @@ export default function QuoteForm() {
       {moveType === "domestic" && (
         <div className="space-y-6">
           <h3 className="text-lg font-bold text-navy-950">Domestic Moves</h3>
-          <AddressBlock legend="Moving From" required />
-          <AddressBlock legend="Moving To" required />
+          <AddressBlock legend="Moving From" prefix="from" required />
+          <AddressBlock legend="Moving To" prefix="to" required />
           <Field label="Moving Date" required>
             <DatePicker
               value={movingDate}
@@ -368,8 +418,8 @@ export default function QuoteForm() {
           <h3 className="text-lg font-bold text-navy-950">
             International Moves
           </h3>
-          <AddressBlock legend="Moving From" required />
-          <AddressBlock legend="Moving To" required />
+          <AddressBlock legend="Moving From" prefix="from" required />
+          <AddressBlock legend="Moving To" prefix="to" required />
           <Field label="Moving Date">
             <DatePicker
               value={movingDate}
@@ -378,7 +428,7 @@ export default function QuoteForm() {
             />
           </Field>
           <Field label="Who is paying for your move?" required>
-            <input type="text" required className={inputClass} />
+            <input type="text" name="payer" required className={inputClass} />
           </Field>
           <ExtrasBlock />
           <NotesBlock />
@@ -392,17 +442,43 @@ export default function QuoteForm() {
           </h3>
           <div className="grid gap-4 sm:grid-cols-3">
             <Field label="Company Name" required>
-              <input type="text" required className={inputClass} />
+              <input
+                type="text"
+                name="company-name"
+                required
+                autoComplete="organization"
+                className={inputClass}
+              />
             </Field>
             <Field label="Contact Name" required>
-              <input type="text" required className={inputClass} />
+              <input
+                type="text"
+                name="contact-name"
+                required
+                className={inputClass}
+              />
             </Field>
             <Field label="Work Phone Number" required>
-              <input type="tel" required className={inputClass} />
+              <input
+                type="tel"
+                name="work-phone"
+                required
+                className={inputClass}
+              />
             </Field>
           </div>
-          <AddressBlock legend="Moving From" required showBedrooms={false} />
-          <AddressBlock legend="Moving To" required showBedrooms={false} />
+          <AddressBlock
+            legend="Moving From"
+            prefix="from"
+            required
+            showBedrooms={false}
+          />
+          <AddressBlock
+            legend="Moving To"
+            prefix="to"
+            required
+            showBedrooms={false}
+          />
           <div className="grid gap-4 sm:grid-cols-2">
             <Field label="Moving Date" required>
               <DatePicker
@@ -413,7 +489,13 @@ export default function QuoteForm() {
               />
             </Field>
             <Field label="Number of employees" required>
-              <input type="number" min={1} required className={inputClass} />
+              <input
+                type="number"
+                name="employees"
+                min={1}
+                required
+                className={inputClass}
+              />
             </Field>
           </div>
           <ExtrasBlock commercial />
@@ -421,12 +503,31 @@ export default function QuoteForm() {
         </div>
       )}
 
-      <button
-        type="submit"
-        className="w-full rounded-full bg-brand-600 px-9 py-4 text-base font-bold text-white shadow-xl shadow-brand-600/30 transition hover:-translate-y-0.5 hover:bg-brand-500 sm:w-auto"
-      >
-        Request my Free Quote
-      </button>
+      {state.error && (
+        <div
+          role="alert"
+          className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700"
+        >
+          {state.error}
+        </div>
+      )}
+
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-6">
+        <button
+          type="submit"
+          disabled={pending}
+          className="w-full rounded-full bg-brand-600 px-9 py-4 text-base font-bold text-white shadow-xl shadow-brand-600/30 transition hover:-translate-y-0.5 hover:bg-brand-500 disabled:cursor-wait disabled:opacity-70 disabled:hover:translate-y-0 sm:w-auto"
+        >
+          {pending ? "Sending your enquiry…" : "Request my Free Quote"}
+        </button>
+        <p className="text-xs text-slate-500">
+          We&rsquo;ll only use your details to respond to this enquiry. See our{" "}
+          <a href="/privacy-policy" className="font-semibold underline underline-offset-2">
+            privacy policy
+          </a>
+          .
+        </p>
+      </div>
     </form>
   );
 }
