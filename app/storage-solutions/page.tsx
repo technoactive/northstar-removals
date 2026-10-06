@@ -11,7 +11,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Storage Solutions | Secure Storage for Harrow, Pinner & London",
   description:
-    "Secure containerised storage for Harrow, Pinner, North West London and beyond, across 7+ locations including Park Royal NW10. Collected from your door, flexible terms from one week to many years.",
+    "Secure containerised storage for Harrow, Pinner and North West London across 7+ locations including Park Royal. Collected from your door, from one week upwards.",
   alternates: { canonical: "/storage-solutions" },
 };
 

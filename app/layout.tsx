@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     template: "%s | Northstar Removals",
   },
   description:
-    "Award-winning removal company based in Pinner, serving Harrow, North West London and the whole of London since 2006. House and office removals, packing, piano moves, international relocation and secure storage.",
+    "Award-winning removal company in Pinner serving Harrow, North West London and all of London since 2006. House, office and piano removals, packing and storage.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -200,6 +200,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${archivo.variable} h-full antialiased`}
     >
+      <head>
+        {/* llms.txt discovery hint for AI agents (llmstxt.org convention). */}
+        <link rel="describedby" href="/llms.txt" type="text/plain" />
+      </head>
       <body className="flex min-h-full flex-col">
         <JsonLd data={jsonLd} />
         <a

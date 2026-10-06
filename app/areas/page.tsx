@@ -10,7 +10,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Areas We Cover | Removals Across North West London & Hertfordshire",
   description:
-    "Northstar Removals is based in Pinner and covers Harrow, Ruislip, Northwood, Watford, Uxbridge, Wembley, Ealing, Hampstead, Kensington, St Albans and all of London. Local removal pages for each area.",
+    "Removals across North West London and Hertfordshire from our Pinner depot: Harrow, Ruislip, Watford, Wembley, Hampstead and more. A local page for every area.",
   alternates: { canonical: "/areas" },
 };
 

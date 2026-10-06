@@ -10,7 +10,7 @@ import Star from "@/components/Star";
 export const metadata: Metadata = {
   title: "White Glove Service",
   description:
-    "Northstar's bespoke White Glove moving service: a fully managed, premium relocation experience with personalised planning, expert packing and full home setup.",
+    "Northstar's White Glove Service: a fully managed premium move with personal planning, expert packing and full home set-up across London and beyond.",
   alternates: { canonical: "/white-glove-service" },
 };
 

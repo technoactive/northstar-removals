@@ -11,7 +11,7 @@ import Star from "@/components/Star";
 export const metadata: Metadata = {
   title: "Piano Removals London | Upright & Grand Piano Movers",
   description:
-    "Specialist piano removals across London, the UK and worldwide from Northstar. Upright and grand pianos moved by trained crews with purpose-built equipment, full insurance and storage if needed.",
+    "Specialist piano removals across London, the UK and worldwide. Upright and grand pianos moved by trained crews with the right equipment, fully insured.",
   alternates: { canonical: "/piano-removals" },
 };
 

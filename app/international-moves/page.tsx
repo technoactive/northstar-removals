@@ -10,7 +10,7 @@ import Star from "@/components/Star";
 export const metadata: Metadata = {
   title: "International Removals London | Worldwide Moves by Road, Sea & Air",
   description:
-    "International removals from London and the UK with over 20 years of experience. Export packing, container shipping, airfreight, customs clearance and full documentation, managed door to door.",
+    "International removals from London with 20 years' experience. Export packing, sea and air freight, customs clearance and documentation, managed door to door.",
   alternates: { canonical: "/international-moves" },
 };
 

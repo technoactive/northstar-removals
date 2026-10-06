@@ -11,7 +11,7 @@ import Star from "@/components/Star";
 export const metadata: Metadata = {
   title: "Packing Service London | Professional Packers & Materials",
   description:
-    "Professional packing and unpacking service across London and the UK from Northstar. Full or part packing, fragile-only packing, export packing and packing materials delivered to your door.",
+    "Professional packing service across London and the UK. Full, part, fragile-only and export packing, with materials delivered and unpacking on request.",
   alternates: { canonical: "/packing-service" },
 };
 

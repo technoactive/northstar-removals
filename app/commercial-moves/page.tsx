@@ -10,7 +10,7 @@ import Star from "@/components/Star";
 export const metadata: Metadata = {
   title: "Office Removals London | Commercial Moves & Move Management",
   description:
-    "Office removals in London and the home counties from an award-winning commercial mover based in Pinner. Move management, IT relocation, professional packing, storage and recycling, carried out of hours to minimise downtime.",
+    "Office removals in London from an award-winning Pinner-based mover. Move management, IT relocation, packing and storage, carried out of hours to cut downtime.",
   alternates: { canonical: "/commercial-moves" },
 };
 
