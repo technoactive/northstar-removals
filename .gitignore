@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Private client documents — do not commit
 /proposal/
+
+# Credentials, recovery phrases, API keys — NEVER commit
+/credentials/
