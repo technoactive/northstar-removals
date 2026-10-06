@@ -19,7 +19,7 @@ const team = [
     image: "/images/team-denis.jpg",
     bio: [
       "Denis is a dual citizen of South Africa and the UK. He completed his schooling and military service in South Africa. He has travelled extensively to over 40 countries worldwide and has a wide range of interests, including genealogical research and associated history. His paternal lineage has a long military background, with grandparents and great-grandparents who served in WW2, the Anglo-Boer War, Crimea, and China in 1860. He commenced his career starting at the back of a removal vehicle and has personally relocated many a satisfied customer in his early years.",
-      "Having worked his way up through the ranks in removals operations, eventually transitioning into office roles where he succeeded in both sales and customer relations, he eventually became a department head and senior manager. After working for two major corporate removal companies, Denis decided to start his own business with just a van and a man almost 19 years ago, which is now Northstar Removals & Storage.",
+      "Having worked his way up through the ranks in removals operations, eventually transitioning into office roles where he succeeded in both sales and customer relations, he eventually became a department head and senior manager. After working for two major corporate removal companies, Denis decided to start his own business in 2006 with just a van and a man, which is now Northstar Removals & Storage.",
       "Denis is a Freeman of London and also a Liveryman at the Worshipful Company of Carmen.",
     ],
   },

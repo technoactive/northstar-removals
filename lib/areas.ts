@@ -623,7 +623,7 @@ export const areas: Area[] = [
     heroSubtitle:
       "Georgian terraces, listed houses and streets a lorry cannot turn in — Hampstead moves are planned in detail and carried out by our most experienced crews.",
     intro: [
-      "Hampstead is one of the most demanding places in London to move house, and one of the areas we are proudest of. Georgian and Victorian houses on steep, narrow streets; listed interiors that must not be marked; contents that regularly include fine art, antiques and pianos; and Camden's parking rules on top. We have been moving families here for nearly twenty years.",
+      "Hampstead is one of the most demanding places in London to move house, and one of the areas we are proudest of. Georgian and Victorian houses on steep, narrow streets; listed interiors that must not be marked; contents that regularly include fine art, antiques and pianos; and Camden's parking rules on top. We have been moving families here since 2006.",
       "A Hampstead move usually begins with an in-person survey, because photographs do not show how a staircase turns or whether a 7.5-tonne lorry can get up the hill. From that we choose vehicles, plan the carry, book parking suspensions and, where contents warrant it, bring in our White Glove Service with crating and a dedicated move manager.",
       "We cover the whole of NW3 and the surrounding villages — Belsize Park, Swiss Cottage, West Hampstead, Golders Green, Highgate and Hampstead Garden Suburb — for domestic moves, office moves and storage.",
     ],
@@ -725,7 +725,7 @@ export const areas: Area[] = [
     description:
       "North London removals from an award-winning company in Pinner. Barnet, Finchley, Muswell Hill, Crouch End and Islington. Homes, offices, packing and storage.",
     heroSubtitle:
-      "From Barnet and Finchley to Muswell Hill, Crouch End and Islington — a North London removal company with nearly twenty years of local moves behind it.",
+      "From Barnet and Finchley to Muswell Hill, Crouch End and Islington — a North London removal company with 20 years of local moves behind it.",
     intro: [
       "North London has been part of our patch since Northstar started in 2006. From our Pinner depot we reach Mill Hill, Finchley and Barnet in around half an hour, and Muswell Hill, Crouch End, Highgate and Islington not long after.",
       "The area covers everything from large detached houses in Totteridge and Hampstead Garden Suburb to Victorian terraces in Crouch End and Islington and converted flats throughout. Parking is controlled across most of these boroughs, so suspensions from Barnet, Haringey, Islington or Camden are usually part of the plan, and we handle them.",

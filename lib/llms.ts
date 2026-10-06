@@ -158,7 +158,7 @@ export function llmsFullTxt(): string {
     "",
     "## International Moves",
     "",
-    "Moving outside the UK requires export packing, container loading, export documentation, shipping and knowledge of local conditions. With over 20 years of experience and a wide partner network of established agents in overseas destinations, Northstar handles everything door to door by road, sea and air. Export packing is completed to the highest standard with a wide variety of materials and well-tested methods, and trained staff guide customers through customs paperwork and documentation.",
+    "Moving outside the UK requires export packing, container loading, export documentation, shipping and knowledge of local conditions. With 20 years of experience and a wide partner network of established agents in overseas destinations, Northstar handles everything door to door by road, sea and air. Export packing is completed to the highest standard with a wide variety of materials and well-tested methods, and trained staff guide customers through customs paperwork and documentation.",
     "",
     "## Commercial Moves",
     "",

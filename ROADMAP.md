@@ -29,6 +29,22 @@ See `docs/email-setup.md` for the full flow and deliverability notes.
       use the root domain to match.
 - [ ] In Google Search Console, add `northstar-removals.com` as a Domain
       property (covers both www and root) and submit `/sitemap.xml`.
+      Needs the client's Google account — cannot be done from the codebase.
+      1. search.google.com/search-console → Add property → **Domain** →
+         `northstar-removals.com`. Google gives a TXT record; add it in
+         Cloudflare DNS (name `@`). Verify. (Fallback: URL-prefix property
+         with the HTML-tag method — paste the token into the
+         `GOOGLE_SITE_VERIFICATION` env var in Vercel and redeploy.)
+      2. Sitemaps → enter `sitemap.xml` → Submit. Expect 33 URLs.
+      3. URL Inspection → paste each of `/`, `/areas/pinner`,
+         `/domestic-moves`, `/contact-us` → **Test live URL**. Each should
+         show "URL is available to Google", with Breadcrumbs/FAQ/Service
+         detected under Enhancements where present, then click
+         **Request indexing**.
+      4. After a few days check Pages → "Not indexed" for anything
+         unexpected and Enhancements for structured-data errors.
+      Structured data on those four pages was validated with
+      validator.schema.org on 2026-10-06: 0 errors, 0 warnings.
 - [ ] Confirm the legacy 301 redirects work in production (already
       implemented in `next.config.ts`, tested locally)
 - [ ] In Cloudflare, check Security → Bots: "Block AI bots" must be OFF and

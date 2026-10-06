@@ -45,6 +45,12 @@ export const metadata: Metadata = {
   description:
     "Award-winning removal company in Pinner serving Harrow, North West London and all of London since 2006. House, office and piano removals, packing and storage.",
   alternates: { canonical: "/" },
+  // Search Console "HTML tag" verification. Set GOOGLE_SITE_VERIFICATION in
+  // Vercel to the token Google gives you (the content="" value only). Not
+  // needed if the site is verified as a Domain property via DNS.
+  verification: process.env.GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+    : undefined,
   openGraph: {
     type: "website",
     locale: "en_GB",

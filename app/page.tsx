@@ -61,7 +61,7 @@ const stats = [
 const whyChoose = [
   {
     title: "Experience and Expertise",
-    body: "With almost 20 years in the industry, Northstar Removals boasts unparalleled experience and expertise in the art of moving. Our dedicated team of specialists, coupled with top-notch equipment and extensive packaging options, ensures the highest quality service at competitive rates.",
+    body: "With 20 years in the industry, Northstar Removals boasts unparalleled experience and expertise in the art of moving. Our dedicated team of specialists, coupled with top-notch equipment and extensive packaging options, ensures the highest quality service at competitive rates.",
   },
   {
     title: "Customer-Centric Approach",
@@ -166,7 +166,7 @@ export default function Home() {
               Move!
             </h1>
             <p className="fade-up fade-up-delay-2 mt-6 max-w-xl text-lg text-white/85 sm:text-xl">
-              Your trusted moving partner for nearly 20 years — packing, moving
+              Your trusted moving partner for 20 years — packing, moving
               and storage across London, the UK and worldwide.
             </p>
             <div className="fade-up fade-up-delay-3 mt-9 flex flex-col gap-4 sm:flex-row">
@@ -290,10 +290,10 @@ export default function Home() {
                 Why choose Northstar?
               </p>
               <h2 className="mt-3 font-display text-3xl font-black italic text-navy-950 sm:text-4xl">
-                Nearly two decades of brilliant moves
+                20 years of brilliant moves
               </h2>
               <p className="mt-4 leading-relaxed text-slate-600">
-                For nearly two decades, Northstar Removals has been the go-to
+                Since 2006, Northstar Removals has been the go-to
                 choice for individuals and businesses seeking seamless
                 relocation solutions. Our commitment to excellence is evident
                 in our comprehensive range of professional services tailored to

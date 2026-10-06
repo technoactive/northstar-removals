@@ -39,7 +39,7 @@ export default function InternationalMoves() {
       <ServiceJsonLd
         name="International Removals London"
         serviceType="International removals and relocation"
-        description="International removals from London and the UK with over 20 years of experience. Export packing, container shipping, airfreight, customs clearance and full documentation, managed door to door."
+        description="International removals from London and the UK with 20 years of experience. Export packing, container shipping, airfreight, customs clearance and full documentation, managed door to door."
         path="/international-moves"
         image="/images/international.jpg"
         areaServed={["United Kingdom", "Worldwide"]}
@@ -61,7 +61,7 @@ export default function InternationalMoves() {
             />
             <div className="absolute -bottom-5 right-6 rounded-2xl bg-navy-950 px-5 py-3 text-white shadow-xl">
               <p className="font-display font-black italic">
-                20+ years worldwide
+                20 years worldwide
               </p>
             </div>
           </div>
@@ -80,7 +80,7 @@ export default function InternationalMoves() {
               explore a new country.
             </p>
             <p>
-              Here at Northstar Removals with over 20 years experience we will
+              Here at Northstar Removals, with 20 years&rsquo; experience, we will
               ensure a smooth stress free transition. With a wide partner
               network of established agents in many overseas destinations, we
               assure that everything is handled at your destination with the
