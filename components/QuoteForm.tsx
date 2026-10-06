@@ -754,25 +754,27 @@ export default function QuoteForm() {
             Step 4: your details
           </span>
           <div className="grid gap-5 sm:grid-cols-2">
-            <Field name="name" label={isCommercial ? "Your name" : "Full name"} required error={errors["name"]}>
-              <input
-                type="text"
-                name="name"
-                required
-                autoComplete="name"
-                enterKeyHint="next"
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                  clearError("name");
-                }}
-                className={`${inputBase} ${errors["name"] ? inputBad : inputOk}`}
-              />
-            </Field>
+            <div className="sm:col-span-2">
+              <Field name="name" label={isCommercial ? "Your name" : "Full name"} required error={errors["name"]}>
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  autoComplete="name"
+                  enterKeyHint="next"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    clearError("name");
+                  }}
+                  className={`${inputBase} ${errors["name"] ? inputBad : inputOk}`}
+                />
+              </Field>
+            </div>
             <Field
               name="phone"
               label={isCommercial ? "Work phone" : "Phone"}
-              hint="Mobile is best — we can WhatsApp you if easier."
+              hint="Mobile is best — we can WhatsApp you."
               required
               error={errors["phone"]}
             >
@@ -792,11 +794,11 @@ export default function QuoteForm() {
                 className={`${inputBase} ${errors["phone"] ? inputBad : inputOk}`}
               />
             </Field>
-            <div className="sm:col-span-2">
+            <div>
               <Field
                 name="email"
                 label={isCommercial ? "Work email" : "Email"}
-                hint="We'll send a copy of your enquiry and your quote here."
+                hint="Your enquiry copy and quote go here."
                 required
                 error={errors["email"]}
               >
