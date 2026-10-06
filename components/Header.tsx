@@ -38,13 +38,13 @@ export default function Header() {
           <Star className="star-glow h-8 w-8 text-white transition group-hover:rotate-45 group-hover:duration-500" />
           <span className="font-display text-xl font-black italic tracking-tight sm:text-2xl">
             NORTHSTAR
-            <span className="ml-2 hidden align-middle font-sans text-[10px] font-bold not-italic tracking-[0.2em] text-brand-500 sm:inline">
+            <span className="ml-2 hidden whitespace-nowrap align-middle font-sans text-[10px] font-bold not-italic tracking-[0.2em] text-brand-500 sm:inline xl:hidden">
               PACKING · MOVING · STORAGE
             </span>
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-1 whitespace-nowrap xl:flex">
           {navLinks.map((link) =>
             "children" in link ? (
               <div key={link.title} className="group relative">
@@ -97,7 +97,7 @@ export default function Header() {
           type="button"
           aria-label="Toggle menu"
           onClick={() => setMobileOpen((v) => !v)}
-          className="rounded-lg p-2 transition hover:bg-white/10 lg:hidden"
+          className="rounded-lg p-2 transition hover:bg-white/10 xl:hidden"
         >
           <svg
             className="h-6 w-6"
@@ -117,7 +117,7 @@ export default function Header() {
       </div>
 
       {mobileOpen && (
-        <nav className="border-t border-white/10 bg-navy-950 px-4 pb-5 lg:hidden">
+        <nav className="border-t border-white/10 bg-navy-950 px-4 pb-5 xl:hidden">
           <Link
             href="/"
             onClick={() => setMobileOpen(false)}
