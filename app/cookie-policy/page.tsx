@@ -62,9 +62,17 @@ export default function CookiePolicyPage() {
                 </li>
               </ul>
               <p>
+                <strong>Privacy-friendly analytics.</strong> We use Vercel Web
+                Analytics and Speed Insights to count page views and measure
+                how quickly pages load. These tools do not use cookies or
+                store any identifier on your device, and the data is
+                aggregated and anonymous, so they do not require your consent.
+              </p>
+              <p>
                 We do not use advertising or cross-site tracking cookies. If
-                we introduce analytics in future, this policy and our consent
-                banner will be updated before any such cookies are set.
+                we introduce cookie-based analytics in future, this policy and
+                our consent banner will be updated before any such cookies are
+                set.
               </p>
             </>
           ),

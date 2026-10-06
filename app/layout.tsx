@@ -6,6 +6,8 @@ import PreFooter from "@/components/PreFooter";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import MobileActionBar from "@/components/MobileActionBar";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import JsonLd, { ORG_ID, WEBSITE_ID } from "@/components/JsonLd";
 import { serviceCards, site, siteUrl } from "@/lib/site";
 
@@ -205,6 +207,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Footer />
         <MobileActionBar />
         <CookieBanner />
+        {/* Cookieless, first-party (/_vercel/*) — no consent required */}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
