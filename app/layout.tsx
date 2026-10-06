@@ -6,6 +6,8 @@ import PreFooter from "@/components/PreFooter";
 import Footer from "@/components/Footer";
 import CookieBanner from "@/components/CookieBanner";
 import MobileActionBar from "@/components/MobileActionBar";
+import JsonLd, { ORG_ID, WEBSITE_ID } from "@/components/JsonLd";
+import { serviceCards, site, siteUrl } from "@/lib/site";
 
 // Fonts are self-hosted (variable woff2, latin subset) so the build never
 // depends on Google Fonts. This avoids a Turbopack build failure on Vercel
@@ -29,8 +31,6 @@ const archivo = localFont({
   variable: "--font-archivo",
   display: "swap",
 });
-
-const siteUrl = "https://northstar-removals.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -80,30 +80,107 @@ export const metadata: Metadata = {
   },
 };
 
+/**
+ * Site-wide entity graph. Every other schema block (Service, BreadcrumbList,
+ * FAQPage) links back to ORG_ID so search engines and AI assistants see one
+ * consistent business entity rather than several disconnected ones.
+ */
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "MovingCompany",
-  name: "Northstar Removals & Storage",
-  url: siteUrl,
-  logo: `${siteUrl}/images/icon.png`,
-  image: `${siteUrl}/images/hero.jpg`,
-  slogan: "For a Brilliant Move!",
-  foundingDate: "2006",
-  email: "info@northstar-removals.com",
-  telephone: "+442088689414",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Unit 1, Leeway House, Leeway Close",
-    addressLocality: "Pinner",
-    addressRegion: "Greater London",
-    postalCode: "HA5 4SE",
-    addressCountry: "GB",
-  },
-  areaServed: ["London", "United Kingdom", "Worldwide"],
-  memberOf: {
-    "@type": "Organization",
-    name: "National Guild of Removers",
-  },
+  "@graph": [
+    {
+      "@type": ["MovingCompany", "LocalBusiness", "Organization"],
+      "@id": ORG_ID,
+      name: site.legalName,
+      alternateName: site.name,
+      url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/images/icon.png`,
+      },
+      image: `${siteUrl}/images/hero.jpg`,
+      description: site.description,
+      slogan: site.slogan,
+      foundingDate: site.foundingDate,
+      founder: { "@type": "Person", name: "Denis" },
+      email: site.email,
+      telephone: "+442088689414",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Unit 1, Leeway House, Leeway Close",
+        addressLocality: "Pinner",
+        addressRegion: "Greater London",
+        postalCode: "HA5 4SE",
+        addressCountry: "GB",
+      },
+      contactPoint: [
+        {
+          "@type": "ContactPoint",
+          contactType: "customer service",
+          telephone: "+442088689414",
+          email: site.email,
+          areaServed: "GB",
+          availableLanguage: "English",
+        },
+        {
+          "@type": "ContactPoint",
+          contactType: "sales",
+          telephone: "+448001701188",
+          areaServed: "GB",
+          availableLanguage: "English",
+        },
+      ],
+      areaServed: [
+        { "@type": "City", name: "London" },
+        { "@type": "Country", name: "United Kingdom" },
+        { "@type": "Place", name: "Worldwide" },
+      ],
+      memberOf: [
+        { "@type": "Organization", name: "National Guild of Removers" },
+        {
+          "@type": "Organization",
+          name: "Removals Industry Ombudsman Scheme",
+        },
+      ],
+      award: [
+        "Super Elite Remover 2024",
+        "Super Elite Remover 2023",
+        "Ombudsman's Perfect Record Award 2022",
+        "Elite Honours Remover 2022",
+      ],
+      knowsAbout: [
+        "House removals",
+        "Office relocation",
+        "International removals",
+        "Containerised storage",
+        "Export packing",
+        "Fine art and antiques moving",
+      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Removals and storage services",
+        itemListElement: serviceCards.map((s) => ({
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            "@id": `${siteUrl}${s.href}#service`,
+            name: s.title,
+            description: s.description,
+            url: `${siteUrl}${s.href}`,
+          },
+        })),
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": WEBSITE_ID,
+      url: siteUrl,
+      name: site.name,
+      description: site.description,
+      publisher: { "@id": ORG_ID },
+      inLanguage: "en-GB",
+    },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -113,10 +190,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${archivo.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={jsonLd} />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-navy-950 focus:px-5 focus:py-2.5 focus:text-sm focus:font-bold focus:text-white"

@@ -9,6 +9,8 @@ export default function Select({
   placeholder = "Please select…",
   required = false,
   name,
+  id,
+  "aria-labelledby": ariaLabelledBy,
 }: {
   options: string[];
   value: string;
@@ -16,6 +18,8 @@ export default function Select({
   placeholder?: string;
   required?: boolean;
   name?: string;
+  id?: string;
+  "aria-labelledby"?: string;
 }) {
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -85,7 +89,11 @@ export default function Select({
     <div ref={rootRef} className="relative">
       <button
         type="button"
+        id={id}
         role="combobox"
+        aria-labelledby={
+          ariaLabelledBy && id ? `${ariaLabelledBy} ${id}` : ariaLabelledBy
+        }
         aria-expanded={open}
         aria-controls={listboxId}
         aria-haspopup="listbox"
@@ -93,7 +101,7 @@ export default function Select({
         onKeyDown={onKeyDown}
         className={`flex w-full items-center justify-between gap-3 rounded-lg border bg-white px-4 py-2.5 text-left text-sm transition focus:border-navy-700 focus:outline-none focus:ring-2 focus:ring-navy-700/25 ${
           open ? "border-navy-700 ring-2 ring-navy-700/25" : "border-navy-900/15"
-        } ${value ? "text-navy-950" : "text-slate-400"}`}
+        } ${value ? "text-navy-950" : "text-slate-500"}`}
       >
         {value || placeholder}
         <svg

@@ -14,7 +14,11 @@ export default function Star({ className = "" }: { className?: string }) {
 
 export function FiveStars({ className = "h-4 w-4" }: { className?: string }) {
   return (
-    <div className="flex gap-1 text-amber-400" aria-label="5 out of 5 stars">
+    <div
+      role="img"
+      className="flex gap-1 text-amber-400"
+      aria-label="5 out of 5 stars"
+    >
       {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}

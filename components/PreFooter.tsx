@@ -67,7 +67,7 @@ export default function PreFooter() {
         </Link>
       </div>
       <div className="mx-auto max-w-7xl px-4 pb-14">
-        <p className="mb-6 text-center text-xs font-bold uppercase tracking-[0.25em] text-slate-400">
+        <p className="mb-6 text-center text-xs font-bold uppercase tracking-[0.25em] text-slate-600">
           Affiliations &amp; Accreditations
         </p>
         <TrustBar />

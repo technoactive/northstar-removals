@@ -1,4 +1,5 @@
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 type FaqItem = {
   question: string;
@@ -8,7 +9,7 @@ type FaqItem = {
   content: React.ReactNode;
 };
 
-const faqs: FaqItem[] = [
+export const faqs: FaqItem[] = [
   {
     question: "How much does a removal cost?",
     answer:
@@ -112,10 +113,7 @@ const jsonLd = {
 export default function Faq() {
   return (
     <section aria-labelledby="faq-heading" className="bg-white">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <div className="mx-auto max-w-4xl px-4 py-16 sm:py-24">
         <p className="text-center text-xs font-bold uppercase tracking-[0.25em] text-brand-600">
           Good to know

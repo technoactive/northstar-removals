@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { ServiceJsonLd } from "@/components/JsonLd";
 import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Star from "@/components/Star";
@@ -32,6 +33,13 @@ export default function DomesticMoves() {
         subtitle="Household removals London and the UK"
         image="/images/domestic-family.jpg"
         imageAlt="A family beside their removals van after moving home"
+      />
+      <ServiceJsonLd
+        name="Domestic Moves"
+        serviceType="Household removals"
+        description="Household removals in London and across the UK. Friendly, professional moving services tailored to your needs with transparent, fixed-price quotes."
+        path="/domestic-moves"
+        image="/images/domestic-family.jpg"
       />
       <Breadcrumbs
         items={[{ title: "Domestic Moves", href: "/domestic-moves" }]}

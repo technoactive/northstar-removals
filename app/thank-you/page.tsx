@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   title: "Thank You — Enquiry Received",
   description:
     "Thank you for contacting Northstar Removals. We have received your enquiry and will be in touch shortly with your free, bespoke quotation.",
+  // Without this the page would inherit the root layout's canonical ("/").
+  alternates: { canonical: "/thank-you" },
   robots: { index: false, follow: true },
 };
 

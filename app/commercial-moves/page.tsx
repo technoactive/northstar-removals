@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { ServiceJsonLd } from "@/components/JsonLd";
 import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Star from "@/components/Star";
@@ -104,6 +105,13 @@ export default function CommercialMoves() {
         subtitle="Northstar: Your Trusted Partner in Office Removals and Move Management"
         image="/images/office-move.jpg"
         imageAlt="An office relocation in progress"
+      />
+      <ServiceJsonLd
+        name="Commercial Moves"
+        serviceType="Office and commercial removals"
+        description="Office removals and move management throughout London and the home counties. IT relocation, move planning, professional packing, storage and recycling."
+        path="/commercial-moves"
+        image="/images/office-move.jpg"
       />
       <Breadcrumbs
         items={[{ title: "Commercial Moves", href: "/commercial-moves" }]}

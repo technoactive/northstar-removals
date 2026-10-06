@@ -1,6 +1,13 @@
+/** Canonical origin. The www host 308-redirects here on Vercel. */
+export const siteUrl = "https://northstar-removals.com";
+
 export const site = {
   name: "Northstar Removals",
   legalName: "Northstar Removals & Storage",
+  slogan: "For a Brilliant Move!",
+  foundingDate: "2006",
+  description:
+    "Award-winning removals and storage company based in Pinner, London. Domestic, international and commercial moves plus secure storage solutions across the UK and worldwide.",
   email: "info@northstar-removals.com",
   phones: [
     { label: "+44 (0)20 8868 9414", href: "tel:+442088689414" },

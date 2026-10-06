@@ -1,6 +1,6 @@
 import Link from "next/link";
-
-const siteUrl = "https://northstar-removals.com";
+import JsonLd from "@/components/JsonLd";
+import { siteUrl } from "@/lib/site";
 
 export default function Breadcrumbs({
   items,
@@ -24,10 +24,7 @@ export default function Breadcrumbs({
       aria-label="Breadcrumb"
       className="border-b border-navy-900/5 bg-slate-50"
     >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <ol className="mx-auto flex max-w-7xl flex-wrap items-center gap-2 overflow-x-auto px-4 py-3 text-sm">
         {trail.map((item, i) => {
           const isLast = i === trail.length - 1;

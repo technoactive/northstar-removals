@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { ServiceJsonLd } from "@/components/JsonLd";
 import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Star from "@/components/Star";
@@ -162,6 +163,13 @@ export default function WhiteGloveService() {
         subtitle="Northstar Bespoke 'White Glove' Moving Service"
         image="/images/white-glove.jpg"
         imageAlt="White glove premium moving service"
+      />
+      <ServiceJsonLd
+        name="White Glove Service"
+        serviceType="Premium managed removals"
+        description="Northstar's bespoke White Glove moving service: a fully managed, premium relocation experience with personalised planning, expert packing and full home setup."
+        path="/white-glove-service"
+        image="/images/white-glove.jpg"
       />
       <Breadcrumbs
         items={[

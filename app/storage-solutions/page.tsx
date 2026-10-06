@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { ServiceJsonLd } from "@/components/JsonLd";
 import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Star from "@/components/Star";
@@ -54,6 +55,13 @@ export default function StorageSolutions() {
         subtitle="Secure, flexible storage for residential, international, business and commercial clients"
         image="/images/storage-1.jpg"
         imageAlt="Northstar secure storage warehouse"
+      />
+      <ServiceJsonLd
+        name="Storage Solutions"
+        serviceType="Containerised and self storage"
+        description="Secure containerised and climate-controlled storage across 7+ locations. Flexible terms from one week to many years with fully managed collection and delivery."
+        path="/storage-solutions"
+        image="/images/storage-1.jpg"
       />
       <Breadcrumbs
         items={[{ title: "Storage Solutions", href: "/storage-solutions" }]}

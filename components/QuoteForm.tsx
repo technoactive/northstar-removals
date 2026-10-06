@@ -1,13 +1,13 @@
 "use client";
 
-import { useActionState, useState } from "react";
+import { cloneElement, useActionState, useId, useState } from "react";
 import Select from "@/components/Select";
 import DatePicker from "@/components/DatePicker";
 import { submitQuote, type QuoteFormState } from "@/app/actions/quote";
 import type { MoveType } from "@/lib/enquiry";
 
 const inputClass =
-  "w-full rounded-lg border border-navy-900/15 bg-white px-4 py-2.5 text-sm text-navy-950 placeholder:text-slate-400 focus:border-navy-700 focus:outline-none focus:ring-2 focus:ring-navy-700/25";
+  "w-full rounded-lg border border-navy-900/15 bg-white px-4 py-2.5 text-sm text-navy-950 placeholder:text-slate-500 focus:border-navy-700 focus:outline-none focus:ring-2 focus:ring-navy-700/25";
 const labelClass = "mb-1.5 block text-sm font-semibold text-navy-950";
 
 const moveTypes: {
@@ -94,6 +94,11 @@ const hearAboutOptions = [
   "Other",
 ];
 
+/**
+ * Label + control wrapper. The single child control receives a generated
+ * `id` and `aria-labelledby` so the label is programmatically associated —
+ * required for screen readers and for AI agents filling the form.
+ */
 function Field({
   label,
   required,
@@ -101,15 +106,17 @@ function Field({
 }: {
   label: string;
   required?: boolean;
-  children: React.ReactNode;
+  children: React.ReactElement<{ id?: string; "aria-labelledby"?: string }>;
 }) {
+  const id = useId();
+  const labelId = `${id}-label`;
   return (
     <div>
-      <label className={labelClass}>
+      <label id={labelId} htmlFor={id} className={labelClass}>
         {label}
         {required && <span className="text-red-600"> *</span>}
       </label>
-      {children}
+      {cloneElement(children, { id, "aria-labelledby": labelId })}
     </div>
   );
 }

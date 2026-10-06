@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import PageHero from "@/components/PageHero";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { ServiceJsonLd } from "@/components/JsonLd";
 import RelatedServices from "@/components/RelatedServices";
 import CtaBanner from "@/components/CtaBanner";
 import Star from "@/components/Star";
@@ -34,6 +35,14 @@ export default function InternationalMoves() {
         subtitle="Northstar Worldwide Relocation and Removals"
         image="/images/international.jpg"
         imageAlt="Shipping containers ready for international removals"
+      />
+      <ServiceJsonLd
+        name="International Moves"
+        serviceType="International removals and relocation"
+        description="Worldwide relocation and removals with over 20 years of experience. Export packing, container shipping, customs clearance and full documentation."
+        path="/international-moves"
+        image="/images/international.jpg"
+        areaServed={["United Kingdom", "Worldwide"]}
       />
       <Breadcrumbs
         items={[

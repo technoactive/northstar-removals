@@ -416,7 +416,7 @@ export default function Home() {
 
       {/* Awards marquee */}
       <section className="overflow-hidden border-y border-navy-900/10 bg-slate-50 py-12">
-        <p className="mb-8 text-center text-xs font-bold uppercase tracking-[0.25em] text-slate-400">
+        <p className="mb-8 text-center text-xs font-bold uppercase tracking-[0.25em] text-slate-600">
           14+ industry awards &amp; accolades
         </p>
         <div className="marquee-track flex w-max gap-8">

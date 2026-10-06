@@ -37,12 +37,16 @@ export default function DatePicker({
   required = false,
   name,
   placeholder = "Select a date…",
+  id,
+  "aria-labelledby": ariaLabelledBy,
 }: {
   value: Date | null;
   onChange: (date: Date) => void;
   required?: boolean;
   name?: string;
   placeholder?: string;
+  id?: string;
+  "aria-labelledby"?: string;
 }) {
   const today = startOfDay(new Date());
   const [open, setOpen] = useState(false);
@@ -86,12 +90,16 @@ export default function DatePicker({
     <div ref={rootRef} className="relative">
       <button
         type="button"
+        id={id}
+        aria-labelledby={
+          ariaLabelledBy && id ? `${ariaLabelledBy} ${id}` : ariaLabelledBy
+        }
         aria-haspopup="dialog"
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
         className={`flex w-full items-center justify-between gap-3 rounded-lg border bg-white px-4 py-2.5 text-left text-sm transition focus:border-navy-700 focus:outline-none focus:ring-2 focus:ring-navy-700/25 ${
           open ? "border-navy-700 ring-2 ring-navy-700/25" : "border-navy-900/15"
-        } ${value ? "text-navy-950" : "text-slate-400"}`}
+        } ${value ? "text-navy-950" : "text-slate-500"}`}
       >
         {value ? formatDisplay(value) : placeholder}
         <svg
@@ -168,7 +176,7 @@ export default function DatePicker({
             {WEEKDAYS.map((d) => (
               <span
                 key={d}
-                className="py-1 text-[11px] font-bold uppercase tracking-wide text-slate-400"
+                className="py-1 text-[11px] font-bold uppercase tracking-wide text-slate-500"
               >
                 {d}
               </span>

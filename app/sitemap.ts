@@ -1,28 +1,68 @@
 import type { MetadataRoute } from "next";
+import { siteUrl } from "@/lib/site";
 
-const siteUrl = "https://northstar-removals.com";
-
-const routes = [
-  { path: "/", priority: 1.0 },
-  { path: "/domestic-moves", priority: 0.9 },
-  { path: "/international-moves", priority: 0.9 },
-  { path: "/commercial-moves", priority: 0.9 },
-  { path: "/storage-solutions", priority: 0.9 },
-  { path: "/white-glove-service", priority: 0.8 },
-  { path: "/about-us", priority: 0.7 },
-  { path: "/reviews", priority: 0.7 },
-  { path: "/awards", priority: 0.6 },
-  { path: "/contact-us", priority: 0.9 },
-  { path: "/privacy-policy", priority: 0.3 },
-  { path: "/cookie-policy", priority: 0.3 },
-  { path: "/terms-of-service", priority: 0.3 },
+/**
+ * Every indexable page on the site.
+ *
+ * `lastModified` must reflect a real content change, not the build time:
+ * Google ignores lastmod when it is "always now". Bump a page's date when
+ * its content is meaningfully edited. `priority` and `changefreq` are
+ * intentionally omitted — Google ignores both.
+ *
+ * `/thank-you` is noindex and deliberately excluded.
+ */
+const pages: {
+  path: string;
+  lastModified: string;
+  images?: string[];
+}[] = [
+  {
+    path: "/",
+    lastModified: "2026-10-06",
+    images: ["/images/hero.jpg", "/images/domestic-family.jpg"],
+  },
+  {
+    path: "/domestic-moves",
+    lastModified: "2026-10-06",
+    images: ["/images/domestic-family.jpg"],
+  },
+  {
+    path: "/international-moves",
+    lastModified: "2026-10-06",
+    images: ["/images/international.jpg"],
+  },
+  {
+    path: "/commercial-moves",
+    lastModified: "2026-10-06",
+    images: ["/images/office-move.jpg"],
+  },
+  {
+    path: "/storage-solutions",
+    lastModified: "2026-10-06",
+    images: ["/images/storage-1.jpg"],
+  },
+  {
+    path: "/white-glove-service",
+    lastModified: "2026-10-06",
+    images: ["/images/white-glove.jpg"],
+  },
+  { path: "/about-us", lastModified: "2026-10-06" },
+  { path: "/reviews", lastModified: "2026-10-06" },
+  {
+    path: "/awards",
+    lastModified: "2026-10-06",
+    images: ["/images/award-2024.jpg", "/images/award-2023.jpg"],
+  },
+  { path: "/contact-us", lastModified: "2026-10-06" },
+  { path: "/privacy-policy", lastModified: "2026-10-06" },
+  { path: "/cookie-policy", lastModified: "2026-10-06" },
+  { path: "/terms-of-service", lastModified: "2026-10-06" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return routes.map((route) => ({
-    url: `${siteUrl}${route.path}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: route.priority,
+  return pages.map((page) => ({
+    url: `${siteUrl}${page.path}`,
+    lastModified: page.lastModified,
+    images: page.images?.map((src) => `${siteUrl}${src}`),
   }));
 }

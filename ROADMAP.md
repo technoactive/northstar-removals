@@ -31,8 +31,14 @@ See `docs/email-setup.md` for the full flow and deliverability notes.
       property (covers both www and root) and submit `/sitemap.xml`.
 - [ ] Confirm the legacy 301 redirects work in production (already
       implemented in `next.config.ts`, tested locally)
-- [ ] Verify domain in Google Search Console, submit `/sitemap.xml`
-- [ ] Re-run Lighthouse against production (target: 90+ on all categories)
+- [ ] In Cloudflare, check Security → Bots: "Block AI bots" must be OFF and
+      "Managed robots.txt" OFF, otherwise AI assistants are blocked before
+      they ever see our robots.txt / llms.txt.
+- [ ] Re-run Lighthouse against production after deploy (local run: 100 on
+      Accessibility, SEO and Agentic Browsing on /, /contact-us, service pages)
+- [ ] Validate structured data at https://search.google.com/test/rich-results
+      and https://validator.schema.org (Organization graph, Service,
+      BreadcrumbList, FAQPage)
 
 ### 3. Legal sign-off
 
@@ -92,8 +98,12 @@ Rebuild them properly to recapture that traffic:
 - Full rebuild on Next.js 16 with brand design and original photography
 - 20 Years of Excellence badge on the hero
 - Custom Select/DatePicker form controls, mobile-optimised pages
-- SEO: metadata, Open Graph, JSON-LD (MovingCompany, BreadcrumbList,
-  FAQPage), sitemap, robots (open to all crawlers incl. AI), canonicals
+- SEO: metadata, Open Graph, linked JSON-LD graph (Organization/
+  MovingCompany + WebSite with @id, Service per service page, BreadcrumbList,
+  FAQPage), image sitemap with real lastmod, robots naming every major AI
+  crawler, `/llms.txt` + `/llms-full.txt`, canonicals on the root domain
+- Lighthouse 100 on Accessibility, SEO and Agentic Browsing (labelled form
+  controls, role="img" ratings, AA contrast)
 - 404 page, privacy/cookie/terms pages, cookie consent banner
 - Breadcrumbs, related-services interlinking, homepage FAQ,
   dual quote/call CTAs, sticky mobile call bar, skip link
