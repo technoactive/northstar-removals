@@ -69,7 +69,7 @@ const pages: {
     lastModified: LOCAL_SEO, // pages created
     images: [a.image],
   })),
-  { path: "/about-us", lastModified: LAUNCH },
+  { path: "/about-us", lastModified: LOCAL_SEO }, // redesigned: story, values, timeline, team
   { path: "/reviews", lastModified: LAUNCH },
   {
     path: "/awards",
