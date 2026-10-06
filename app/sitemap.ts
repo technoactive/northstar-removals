@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = "https://www.northstar-removals.com";
+const siteUrl = "https://northstar-removals.com";
 
 const routes = [
   { path: "/", priority: 1.0 },

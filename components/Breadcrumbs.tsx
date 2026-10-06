@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const siteUrl = "https://www.northstar-removals.com";
+const siteUrl = "https://northstar-removals.com";
 
 export default function Breadcrumbs({
   items,

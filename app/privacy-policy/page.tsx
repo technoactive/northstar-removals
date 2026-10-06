@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
               </p>
               <p>
                 This policy applies to personal data collected through our
-                website at www.northstar-removals.com and when you contact us
+                website at northstar-removals.com and when you contact us
                 by phone, email or in person in connection with our services.
               </p>
             </>

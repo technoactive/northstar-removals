@@ -1,6 +1,6 @@
 # Northstar Removals
 
-A rebuild of [northstar-removals.com](https://www.northstar-removals.com/) using Next.js 16 (App Router), React 19, TypeScript and Tailwind CSS 4.
+A rebuild of [northstar-removals.com](https://northstar-removals.com/) using Next.js 16 (App Router), React 19, TypeScript and Tailwind CSS 4.
 
 ## Pages
 

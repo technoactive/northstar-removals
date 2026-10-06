@@ -23,7 +23,7 @@ export default function TermsOfServicePage() {
             <>
               <p>
                 These terms of service (&ldquo;Terms&rdquo;) apply to your use
-                of the website at www.northstar-removals.com (the
+                of the website at northstar-removals.com (the
                 &ldquo;Site&rdquo;), operated by Northstar Removals &amp;
                 Storage (&ldquo;Northstar Removals&rdquo;, &ldquo;we&rdquo;,
                 &ldquo;us&rdquo; or &ldquo;our&rdquo;) of Unit 1, Leeway

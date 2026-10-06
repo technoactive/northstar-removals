@@ -30,7 +30,7 @@ const archivo = localFont({
   display: "swap",
 });
 
-const siteUrl = "https://www.northstar-removals.com";
+const siteUrl = "https://northstar-removals.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

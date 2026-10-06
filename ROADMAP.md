@@ -24,10 +24,11 @@ See `docs/email-setup.md` for the full flow and deliverability notes.
 
 - [x] Deployed to Vercel
 - [x] Domain pointed at Vercel via Cloudflare DNS
-- [ ] **Make `www.northstar-removals.com` the primary domain in Vercel**
-      (Project → Settings → Domains) so the apex redirects to www. Currently
-      www redirects to the apex, which conflicts with every page's canonical
-      tag, the sitemap and the old site's 20 years of www URLs.
+- [x] Canonical domain is the root `northstar-removals.com`; Vercel redirects
+      `www` → root (308), and all canonical tags, sitemap and structured data
+      use the root domain to match.
+- [ ] In Google Search Console, add `northstar-removals.com` as a Domain
+      property (covers both www and root) and submit `/sitemap.xml`.
 - [ ] Confirm the legacy 301 redirects work in production (already
       implemented in `next.config.ts`, tested locally)
 - [ ] Verify domain in Google Search Console, submit `/sitemap.xml`

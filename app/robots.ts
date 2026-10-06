@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://www.northstar-removals.com/sitemap.xml",
+    sitemap: "https://northstar-removals.com/sitemap.xml",
   };
 }
