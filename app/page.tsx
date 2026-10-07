@@ -38,7 +38,7 @@ const serviceCards = [
   {
     title: "Packing Service",
     href: "/packing-service",
-    image: "/images/moving-team.jpg",
+    image: "/images/office-move.jpg",
     description:
       "Full, part or fragile-only packing by professionals, with all materials supplied.",
   },
@@ -269,11 +269,11 @@ export default function Home() {
             <div className="relative">
               <div className="relative overflow-hidden rounded-3xl shadow-2xl">
                 <Image
-                  src="/images/moving-team.jpg"
-                  alt="The Northstar moving team"
-                  width={900}
-                  height={760}
-                  className="w-full object-cover"
+                  src="/images/hero.jpg"
+                  alt="The Northstar Removals fleet"
+                  width={1900}
+                  height={828}
+                  className="aspect-[4/3] w-full object-cover object-[88%_center]"
                 />
               </div>
               <div className="absolute -bottom-6 -right-4 hidden rounded-2xl bg-navy-950 px-6 py-4 text-white shadow-2xl sm:block">

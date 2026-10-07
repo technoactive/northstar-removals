@@ -78,7 +78,7 @@ export const serviceCards = [
   {
     title: "Packing Service",
     href: "/packing-service",
-    image: "/images/moving-team.jpg",
+    image: "/images/office-move.jpg",
     description:
       "Full, part or fragile-only packing by professionals, with materials supplied.",
   },

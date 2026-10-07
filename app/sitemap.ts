@@ -56,7 +56,7 @@ const pages: {
   {
     path: "/packing-service",
     lastModified: LOCAL_SEO, // page created
-    images: ["/images/moving-team.jpg"],
+    images: ["/images/office-move.jpg"],
   },
   {
     path: "/piano-removals",

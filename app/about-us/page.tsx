@@ -324,8 +324,8 @@ export default function AboutUs() {
       <PageHero
         title="About Northstar"
         subtitle="A family-founded removals and storage company in Pinner, moving London, the UK and the world since 2006."
-        image="/images/moving-team.jpg"
-        imageAlt="The Northstar Removals team"
+        image="/images/storage-1.jpg"
+        imageAlt="Inside the Northstar storage warehouse"
       />
       <Breadcrumbs items={[{ title: "About Us", href: "/about-us" }]} />
 
@@ -380,12 +380,12 @@ export default function AboutUs() {
           <div className="relative">
             <div className="overflow-hidden rounded-3xl shadow-2xl">
               <Image
-                src="/images/moving-team.jpg"
-                alt="The Northstar Removals crew in front of their truck"
-                width={974}
-                height={824}
+                src="/images/hero.jpg"
+                alt="The Northstar Removals fleet of vans and lorries"
+                width={1900}
+                height={828}
                 priority
-                className="w-full object-cover"
+                className="aspect-[4/3] w-full object-cover object-[88%_center]"
               />
             </div>
             <div className="absolute -bottom-6 left-0 rounded-2xl bg-navy-950 px-6 py-4 text-white shadow-2xl sm:-left-6">

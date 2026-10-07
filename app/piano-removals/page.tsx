@@ -121,11 +121,11 @@ export default function PianoRemovals() {
           </div>
           <div className="relative">
             <Image
-              src="/images/moving-team.jpg"
-              alt="The Northstar moving team"
-              width={900}
-              height={620}
-              className="w-full rounded-3xl object-cover shadow-2xl"
+              src="/images/hero.jpg"
+              alt="The Northstar Removals fleet"
+              width={1900}
+              height={828}
+              className="aspect-[3/2] w-full rounded-3xl object-cover object-[88%_center] shadow-2xl"
             />
             <div className="absolute -bottom-5 left-6 rounded-2xl bg-navy-950 px-5 py-3 text-white shadow-xl">
               <p className="font-display font-black italic">

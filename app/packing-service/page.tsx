@@ -79,15 +79,15 @@ export default function PackingService() {
       <PageHero
         title="Packing Service"
         subtitle="Professional packers, proper materials and a labelling system that puts everything in the right room"
-        image="/images/moving-team.jpg"
-        imageAlt="The Northstar team packing a home"
+        image="/images/office-move.jpg"
+        imageAlt="Furniture wrapped and boxes packed ready for a move"
       />
       <ServiceJsonLd
         name="Packing Service"
         serviceType="Professional packing and unpacking"
         description="Professional packing and unpacking service across London and the UK. Full or part packing, fragile-only packing, export packing and packing materials delivered to your door."
         path="/packing-service"
-        image="/images/moving-team.jpg"
+        image="/images/office-move.jpg"
       />
       <Breadcrumbs
         items={[{ title: "Packing Service", href: "/packing-service" }]}

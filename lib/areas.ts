@@ -191,8 +191,8 @@ export const areas: Area[] = [
       },
     ],
     nearby: ["pinner", "northwood", "uxbridge", "hillingdon", "harrow"],
-    image: "/images/moving-team.jpg",
-    imageAlt: "The Northstar moving team loading a van",
+    image: "/images/domestic-family.jpg",
+    imageAlt: "A family on moving day in Ruislip",
   },
   {
     slug: "northwood",
@@ -399,8 +399,8 @@ export const areas: Area[] = [
       },
     ],
     nearby: ["watford", "stanmore", "pinner", "harrow", "st-albans"],
-    image: "/images/moving-team.jpg",
-    imageAlt: "The Northstar moving team at work",
+    image: "/images/hero.jpg",
+    imageAlt: "The Northstar Removals fleet",
   },
   {
     slug: "uxbridge",
@@ -867,8 +867,8 @@ export const areas: Area[] = [
       },
     ],
     nearby: ["harrow", "wembley", "hampstead", "stanmore", "north-london"],
-    image: "/images/moving-team.jpg",
-    imageAlt: "The Northstar team on a North West London move",
+    image: "/images/hero.jpg",
+    imageAlt: "Northstar Removals vans ready for a North West London move",
   },
   {
     slug: "st-albans",

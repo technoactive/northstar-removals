@@ -48,8 +48,8 @@ export default function Awards() {
       <PageHero
         title="Awards"
         subtitle="The awards we are proud & honoured to have won"
-        image="/images/moving-team.jpg"
-        imageAlt="The award-winning Northstar Removals team"
+        image="/images/hero.jpg"
+        imageAlt="The Northstar Removals fleet"
       />
       <Breadcrumbs items={[{ title: "Awards", href: "/awards" }]} />
       <div className="mx-auto max-w-6xl px-4 py-16">

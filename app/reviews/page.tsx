@@ -107,8 +107,8 @@ export default function Reviews() {
       <PageHero
         title="Reviews"
         subtitle="Our reviews & referrals from our happy customers"
-        image="/images/moving-team.jpg"
-        imageAlt="The Northstar Removals team"
+        image="/images/domestic-family.jpg"
+        imageAlt="A family on moving day"
       />
       <Breadcrumbs items={[{ title: "Reviews", href: "/reviews" }]} />
       <div className="mx-auto max-w-6xl px-4 py-14">
