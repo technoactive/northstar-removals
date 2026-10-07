@@ -2,22 +2,22 @@ import Image from "next/image";
 import Link from "next/link";
 import { footerHelpLinks, legalLinks, site } from "@/lib/site";
 import { areas } from "@/lib/areas";
-import Star from "@/components/Star";
 
 export default function Footer() {
   return (
     <footer className="bg-navy-950 text-white">
       <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:grid-cols-4">
         <div>
-          <Link href="/" className="flex items-center gap-2.5">
-            <Star className="star-glow h-7 w-7 text-white" />
-            <span className="font-display text-xl font-black italic">
-              NORTHSTAR
-            </span>
+          <Link href="/" className="inline-block" aria-label="Northstar Removals & Storage — home">
+            <Image
+              src="/images/logo-dark.png"
+              alt="Northstar — Packing, Moving, Storage. For a Brilliant Move!"
+              width={941}
+              height={458}
+              sizes="200px"
+              className="h-24 w-auto"
+            />
           </Link>
-          <p className="mt-1 text-[10px] font-bold tracking-[0.2em] text-brand-500">
-            PACKING · MOVING · STORAGE
-          </p>
           <p className="mt-4 text-sm leading-relaxed text-white/60">
             Award-winning removals &amp; storage across London, the UK and
             worldwide. For a Brilliant Move!

@@ -106,7 +106,9 @@ const jsonLd = {
       url: siteUrl,
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/images/icon.png`,
+        url: `${siteUrl}/images/logo-white-bg.jpg`,
+        width: 1024,
+        height: 498,
       },
       image: `${siteUrl}/images/hero.jpg`,
       description: site.description,

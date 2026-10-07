@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { navLinks, services, site } from "@/lib/site";
 import Star from "@/components/Star";
@@ -33,15 +34,17 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-        <Link href="/" className="group flex items-center gap-2.5">
-          <Star className="star-glow h-8 w-8 text-white transition group-hover:rotate-45 group-hover:duration-500" />
-          <span className="font-display text-xl font-black italic tracking-tight sm:text-2xl">
-            NORTHSTAR
-            <span className="ml-2 hidden whitespace-nowrap align-middle font-sans text-[10px] font-bold not-italic tracking-[0.2em] text-brand-500 sm:inline xl:hidden">
-              PACKING · MOVING · STORAGE
-            </span>
-          </span>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2">
+        <Link href="/" className="flex shrink-0 items-center" aria-label="Northstar Removals & Storage — home">
+          <Image
+            src="/images/logo-dark.png"
+            alt="Northstar — Packing, Moving, Storage. For a Brilliant Move!"
+            width={941}
+            height={458}
+            priority
+            sizes="(min-width: 640px) 160px, 130px"
+            className="h-16 w-auto sm:h-[4.75rem]"
+          />
         </Link>
 
         <nav className="hidden items-center gap-1 whitespace-nowrap xl:flex">
